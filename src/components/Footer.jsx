@@ -7,7 +7,6 @@ function Footer() {
         <section className="bg-footer">
             <div className="row max-w-[73%] mx-auto py-20">
             
-            
                 <div className="col-lg-4">
                     <img src={Flogo} className="w-[50%]"/>
                     <p className="py-10 text-gray font-jost lg:text-base 2xl:text-lg">

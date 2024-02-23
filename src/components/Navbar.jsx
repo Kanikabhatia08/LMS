@@ -1,12 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import logo from "../images/LOGO.jpg"
 import toast from 'react-hot-toast';
 import search from '../images/Search.png'
+import { IoMdArrowDropdown } from "react-icons/io";
+
 
 function Navbar({isLoggedIn, setIsLoggedIn}) {
+    const [drop, setDrop] = useState(false);
+    console.log(drop,"dropppppppp")
     return (
         <div>
+            
             <nav className="flex lg:flex-row lg:justify-between lg:items-center max-w-[80%] mx-auto text-lg py-2">
                 
                 <Link to="/">
@@ -26,16 +31,23 @@ function Navbar({isLoggedIn, setIsLoggedIn}) {
                         <li className="hover:text-orange hover:no-underline cursor-pointer">
                             <Link to="/Blog">Blog</Link></li>
 
-                        {/* <li><a href="#" className="hover:text-orange hover:no-underline cursor-pointer">Page</a></li>
+                            <button type="button" className="hover:text-orange flex hover:no-underline cursor-pointerring-1 ring-inset ring-gray-300 hover:bg-gray-50" id="menu-button" aria-expanded="true" aria-haspopup="true">
+                                Options
+                                <IoMdArrowDropdown className='mt-2'/>
+                            </button>
+
+                            <div className=" right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                                <div className="py-1" role="none">
+                                <Link to="/Faqs" className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">FAQ's</Link>
+                                <Link to="/ContactUs" className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-1">Contact Us</Link>
+                                
+                                </div>
+                            </div>
+
                         <li><a href="#" className="hover:text-orange hover:no-underline cursor-pointer">LearnPress Add-On</a></li>
-                        <li><a href="#" className="hover:text-orange hover:no-underline cursor-pointer">Premium Theme</a></li> */}
+                        <li><a href="#" className="hover:text-orange hover:no-underline cursor-pointer">Premium Theme</a></li> 
                     </ul>
-                </div>
-            
-                {/* <div class="sm:hidden xl:flex gap-2">
-                    <a href="login.html" class="py-[13px] hover:text-orange hover:no-underline cursor-pointer">Login / Register</a>
-                    <img src="./images/Search.png" alt="Search Icon"/>
-                </div> */}
+                </div>  
 
                 {/* Buttons */}
                 <div className="sm:hidden xl:flex gap-2">

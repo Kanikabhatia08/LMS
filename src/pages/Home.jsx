@@ -145,18 +145,18 @@ function Home() {
       
 
       {/* Add On 3 */}
-      <div class="flex rounded-3xl mx-auto justify-center bg-gradient-to-r mt-20 from-[#C7E6F9] to-[#E8D1FE]">
-        <div class="relative ">
+      <div className="flex rounded-3xl mx-auto justify-center bg-gradient-to-r mt-20 from-[#C7E6F9] to-[#E8D1FE]">
+        <div className="relative ">
             <img src={AddOn3}/>
         </div>
-        <div class="absolute flex lg:mt-12 xl:mt-20 xl:gap-40">
-            <div class="flex">
-                <img src={student} class="lg:w-[19%]"/>
-                <h1 class="lg:text-lg 2xl:text-2xl lg:mt-7 mx-3">Let's Start With Academy LMS</h1>
+        <div className="absolute flex lg:mt-12 xl:mt-20 xl:gap-40">
+            <div className="flex">
+                <img src={student} className="lg:w-[19%]"/>
+                <h1 className="lg:text-lg 2xl:text-2xl lg:mt-7 mx-3">Let's Start With Academy LMS</h1>
             </div>
-            <div class="lg:mt-5 ">
-                <button class="rounded-full lg:text-sm 2xl:text-xl border-orange text-orange border-2 px-4 py-3 ">I'm A Student</button>
-                <button class="rounded-full lg:text-sm 2xl:text-xl ml-4 px-4 py-3 text-white bg-orange border-none">Become An Instructor</button>
+            <div className="lg:mt-5 ">
+                <button className="rounded-full lg:text-sm 2xl:text-xl border-orange text-orange border-2 px-4 py-3 ">I'm A Student</button>
+                <button className="rounded-full lg:text-sm 2xl:text-xl ml-4 px-4 py-3 text-white bg-orange border-none">Become An Instructor</button>
             </div>
         </div>
       </div>

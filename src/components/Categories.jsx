@@ -19,7 +19,9 @@ function Categories({ categories }) {
             
         <div key={category.id} className="col hover:transition-transform transform move-up text-center
             border-lightgray xl:py-16 xl:px-6 border-[1px] py-20 p-10 rounded-2xl hover:text-orange hover:shadow-xl ">
-            <img className="mx-auto py-2" key={index} src={image} alt={category.title} />
+            {img.forEach(element => {
+                <img className="mx-auto py-2"  src={element} alt="icon" />
+            })}
             <h3 className="font-medium xl:text-lg">{category.title}</h3>
             <p className="font-light text-gray">{category.count} Courses</p>
         
