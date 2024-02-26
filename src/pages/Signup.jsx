@@ -26,13 +26,14 @@ function Signup({setIsLoggedIn}) {
         }
     ))
 }
-useEffect(()=>{
-  console.log(formData,"dataa stored")
-  localStorage.setItem("formData", JSON.stringify(formData))
-},[formData])
+// useEffect(()=>{
+//   console.log(formData,"dataa stored")
+//   localStorage.setItem("formData", JSON.stringify(formData))
+// },[formData])
 
 function submitHandler(event){
   event.preventDefault();
+   
     
     if(formData.email.length === 0 && formData.password.length === 0){
       toast.error("Enter Email & Password");
@@ -48,6 +49,25 @@ function submitHandler(event){
       toast.error("Phone number should be of 10 numbers")
     }
     else{
+      // let stored_users = JSON.parse(localStorage.getItem('users'));
+      // console.log(stored_users, "hi", localStorage.getItem('users'))
+      // if(stored_users) {
+      //     stored_users.push({mail: mail.value, password: pass1.value});
+      //     localStorage.setItem('users', JSON.stringify(stored_users));
+      // } 
+      // else {
+      //     localStorage.setItem('users', JSON.stringify([{mail: mail.value, password: pass1.value}]));
+      // }
+      // alert('Your account has been created');  
+
+      let storedUsers = JSON.parse(localStorage.getItem('formData'));
+      if(storedUsers){
+        storedUsers.push(formData);
+        localStorage.setItem("formData", JSON.stringify(storedUsers))
+      }
+      else{
+        localStorage.setItem("formData", JSON.stringify([formData]))
+      }
       setIsLoggedIn(true)
       toast.success("Account Created")
       navigate("/Courses")

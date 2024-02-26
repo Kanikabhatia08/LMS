@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import loginImg from '../images/login.jpg'
@@ -8,7 +8,6 @@ import { AiOutlineEye,AiOutlineEyeInvisible } from "react-icons/ai";
 function Login({setIsLoggedIn}) {
 
   const navigate = useNavigate()
-  const [storedUsers, setStoredUsers] = useState([])
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     email:"",
@@ -17,6 +16,20 @@ function Login({setIsLoggedIn}) {
   
   function submitHandler(event){
     event.preventDefault();
+    let storedUsers = JSON.parse(localStorage.getItem('formData'))
+    console.log(storedUsers,"userssssssssss")
+    if(storedUsers){
+      storedUsers.forEach((users) =>{
+        if(formData.email == users.email && formData.password == users.password){
+          toast.success("You are logged in");
+        }
+      })
+      
+    }
+    else{
+      toast.error("Valid email & password required")
+    }
+
     if(storedUsers){
       if(formData.email.length === 0 || formData.password.length === 0){
         toast.error("Enter Email & Password");
@@ -44,13 +57,6 @@ function Login({setIsLoggedIn}) {
     ))
   }
 
-  //get user datau
-  useEffect(()=>{
-    const storedUsers = JSON.parse(localStorage.getItem('formData'));
-    if(storedUsers){
-      setStoredUsers(storedUsers)
-    }
-  },[])
 
 
     return (
