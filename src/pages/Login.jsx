@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import loginImg from '../images/login.jpg'
@@ -8,6 +8,7 @@ import { AiOutlineEye,AiOutlineEyeInvisible } from "react-icons/ai";
 function Login({setIsLoggedIn}) {
 
   const navigate = useNavigate()
+  const [storedUsers, setStoredUsers] = useState([])
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     email:"",
@@ -16,9 +17,22 @@ function Login({setIsLoggedIn}) {
   
   function submitHandler(event){
     event.preventDefault();
-    setIsLoggedIn(true);
-    toast.success("Logged In");
-    navigate("/courses")
+    if(storedUsers){
+      if(formData.email.length === 0 || formData.password.length === 0){
+        toast.error("Enter Email & Password");
+      }
+      else if(formData.password.length < 6){
+        toast.error("Password should be more than 6 characters")
+      }
+      else{
+        setIsLoggedIn(true);
+        toast.success("Logged In");
+        navigate("/courses")
+      }
+    }
+    else{
+      toast.error("Please signup to create an account")
+    } 
   }
 
   function changeHandler(event){
@@ -30,14 +44,23 @@ function Login({setIsLoggedIn}) {
     ))
   }
 
+  //get user datau
+  useEffect(()=>{
+    const storedUsers = JSON.parse(localStorage.getItem('formData'));
+    if(storedUsers){
+      setStoredUsers(storedUsers)
+    }
+  },[])
+
+
     return (
     <div>
       <section className='flex justify-center mx-auto max-w-[80%]'>
         <div className="max-w-[50%]">
-          <img src={loginImg}/>
+          <img src={loginImg} alt='login'/>
         </div>
         <form onSubmit={submitHandler}>
-          <div className='border-[1px] mt-36 border-lightgray rounded-2xl p-9 shadow-lg"'>
+          <div className='border-[1px] mt-36 border-lightgray rounded-2xl p-9 shadow-lg'>
             <h1 className="text-3xl font-semibold">Login</h1>
             <div>
               <input 
@@ -71,8 +94,8 @@ function Login({setIsLoggedIn}) {
               <input type="checkbox" id="rememberMe"/> Remember Me                        
             </div>
             
-            <input value="Login" className="button rounded-full py-2 text-center text-xl my-4 text-white bg-orange border-none w-full"/>
-            <p>Don't have an account?<Link to="/signup" className='text-orange hover:text-red-600"'>Sign Up</Link></p>
+            <button value="Login" className="button rounded-full py-2 text-center text-xl my-4 text-white bg-orange border-none w-full">Login</button>
+            <p>Don't have an account? <button><Link to="/signup" className='text-orange hover:underline'> Sign Up</Link></button></p>
           </div>
         </form>
 

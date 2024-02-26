@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import hero from '../images/Hero.png'
 import {categories, featured} from '../data'
 import Categories from '../components/Categories'
@@ -9,6 +9,8 @@ import AddOn3 from '../images/Maskgroup3.png'
 import grow from '../images/Grow.png'
 import tick from '../images/Tick.png'
 import student from '../images/student.png'
+import CountUp from 'react-countup'
+import quotes from "../images/Quotes.png"
 
 
 function Home() {
@@ -87,22 +89,22 @@ function Home() {
       <div className="justify-center mx-auto my-20">
         <div className=" row gap-3">
             <div className="col bg-[#F5F5F5] rounded-2xl text-center py-14 p-9">
-                <h1  className="text-4xl font-bold text-orange"><span id="counter" data-value="30"></span>K+</h1>
+                <h1  className="text-4xl font-bold text-orange"><CountUp start={0} end={38} duration={10} suffix="K+"/></h1>
                 <p className="py-3 text-xl font-semibold">Active Students</p>
             </div>
 
             <div  className="col bg-[#F5F5F5] rounded-2xl text-center py-14 p-9">
-                <h1 id="counter" data-value="500" className="text-4xl font-bold text-orange">0</h1>
+                <h1 className="text-4xl font-bold text-orange"><CountUp start={0} end={448} duration={2} /></h1>
                 <p className="py-3 text-xl font-semibold">Total Courses</p>
             </div>
 
             <div className="col bg-[#F5F5F5] rounded-2xl text-center py-14 p-9">
-                <h1 id="counter" data-value="158" className="text-4xl font-bold text-orange">0</h1>
+                <h1 className="text-4xl font-bold text-orange"><CountUp start={0} end={169} duration={4}/></h1>
                 <p className="py-3 text-xl font-semibold">Instructors</p>
             </div>
 
             <div className="col bg-[#F5F5F5] rounded-2xl text-center py-14 p-9">
-                <h1 className="text-4xl font-bold text-orange"><span id="counter" data-value="100" ></span>%</h1>
+                <h1 className="text-4xl font-bold text-orange"><CountUp start={0} end={100} duration={8} suffix="%"/></h1>
                 <p className="py-3 text-xl font-semibold">Satisfaction Rate</p>
             </div>
         </div>
@@ -142,7 +144,44 @@ function Home() {
       </div>
 
       {/* Feedbacks */}
-      
+      <div class="mx-auto justify-center text-center">
+                <div>
+                    <h1 class="text-3xl font-semibold py-2">Student feedbacks</h1>
+                    <h3 class="text-gray font-jost text-xl">What Students Say About Academy LMS</h3>
+                </div>
+                <div>
+                    <div class="row gap-4 mt-10 max-w-[95%] justify-center mx-auto text-left">
+                        <div class="col border-lightgray border-2 rounded-2xl p-8">
+                            <img src={quotes}/>
+                            <p class="text-lg py-3">I must explain to you how all this mistaken . Tdea of denouncing pleasure and praising pain was born and I will give you a complete account of the system and expound</p>
+                            <h2 class="text-xl font-semibold">Taylor Swift</h2>
+                            <p class="text-gray">Designer</p>
+                        </div>
+
+                        <div class="col border-lightgray border-2 rounded-2xl p-8">
+                            <img src={quotes}/>
+                            <p class="text-lg py-3">I must explain to you how all this mistaken . Tdea of denouncing pleasure and praising pain was born and I will give you a complete account of the system and expound</p>
+                            <h2 class="text-xl font-semibold">Selena Gomez</h2>
+                            <p class="text-gray">Developer</p>
+                        </div>
+
+                        <div class="col border-lightgray border-2 rounded-2xl p-8">
+                            <img src={quotes}/>
+                            <p class="text-lg py-3">I must explain to you how all this mistaken . Tdea of denouncing pleasure and praising pain was born and I will give you a complete account of the system and expound</p>
+                            <h2 class="text-xl font-semibold">Harry Styles</h2>
+                            <p class="text-gray">Designer</p>
+                        </div>
+
+                        <div class="col border-lightgray border-2 rounded-2xl p-8">
+                            <img src={quotes}/>
+                            <p class="text-lg py-3">I must explain to you how all this mistaken . Tdea of denouncing pleasure and praising pain was born and I will give you a complete account of the system and expound</p>
+                            <h2 class="text-xl font-semibold">Justin Bieber</h2>
+                            <p class="text-gray">Java Instructor</p>   
+                        </div>
+
+                    </div>
+                </div>
+            </div>
 
       {/* Add On 3 */}
       <div className="flex rounded-3xl mx-auto justify-center bg-gradient-to-r mt-20 from-[#C7E6F9] to-[#E8D1FE]">

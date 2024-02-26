@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import signupImg from '../images/signup.jpg'
 import { Link, useNavigate} from 'react-router-dom';
 import { AiOutlineEye,AiOutlineEyeInvisible } from "react-icons/ai";
@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
 
 function Signup({setIsLoggedIn}) {
 
-
+  const [storedUsers, setStoredUsers] = useState([])
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -25,37 +25,50 @@ function Signup({setIsLoggedIn}) {
             [event.target.name] : event.target.value
         }
     ))
-
 }
+useEffect(()=>{
+  console.log(formData,"dataa stored")
+  localStorage.setItem("formData", JSON.stringify(formData))
+},[formData])
 
 function submitHandler(event){
-    event.preventDefault();
-    if(formData.password != formData.confirmPassword){
+  event.preventDefault();
+    
+    if(formData.email.length === 0 && formData.password.length === 0){
+      toast.error("Enter Email & Password");
+    }
+    else if(formData.password !== formData.confirmPassword){
         toast.error("Passwords do not Match!")
         return;
     }
-    if(formData.password.length < 6 && formData.confirmPassword.length < 6 ){
+    else if(formData.password.length < 6 && formData.confirmPassword.length < 6 ){
         toast.error("Password should contain 6 digits")
     }
-    setIsLoggedIn(true)
-    toast.success("Account Created")
-    navigate("/Courses")
+    else if(formData.phone.length < 10 || formData.phone.length > 10){
+      toast.error("Phone number should be of 10 numbers")
+    }
+    else{
+      setIsLoggedIn(true)
+      toast.success("Account Created")
+      navigate("/Courses")
+    }
+    
 }
 
   return (
     <div>
-      <section className="max-w-[80%] mx-auto justify-center gap-6 flex">
-            <div className="max-w-[45%] mt-16 order-2">
-                <img src={signupImg} className="rounded-[80px]"/>
+      <section className="max-w-[80%] mx-auto justify-center gap-10 flex">
+            <div className="max-w-[45%] my-16 order-2">
+                <img src={signupImg} alt='Signup' className="rounded-[80px]"/>
             </div>
-            <form onsubmit="return false">
+            <form onSubmit={submitHandler}>
                 <div className=" border-[1px] order-1 mt-28 border-lightgray py-16 rounded-2xl shadow-lg p-9 ">
                     <h1 className="text-3xl font-semibold">Register</h1>
                     <div className="flex-col ">
                         <input 
-                          type="email" 
+                          type="email"
                           placeholder="Email*" 
-                          name="mail" 
+                          name="email" 
                           value={formData.email}
                           onChange={changeHandler}
                           className="w-full my-4 border-[1px] border-lightgray rounded-lg p-2 text-lg max-w-full"
@@ -63,12 +76,13 @@ function submitHandler(event){
                         <input 
                           type={showPassword ? ("text") : ("password")}
                           value={formData.password}
+                          name='password'
                           onChange={changeHandler} 
                           placeholder="Password*"  
                           className="w-full mb-4 border-[1px] relative border-lightgray rounded-lg p-2 text-lg max-w-full"
                         />
                         <span 
-                          className='absolute mt-2 right-[50%] cursor-pointer'
+                          className='absolute mt-2 right-[51%] cursor-pointer'
                           onClick={()=>{setShowPassword((prev) => !prev)}}>
                               {
                                   showPassword ? 
@@ -77,14 +91,16 @@ function submitHandler(event){
                               }
                         </span>
                         <input 
-                          type="password" 
-                          id="pass2" 
+                          type={showConfirmPassword ? ("text") : ("password")}
+                          value={formData.confirmPassword}
+                          name='confirmPassword'
+                          onChange={changeHandler} 
                           placeholder="Confirm Password*"  
                           className="w-full mb-4 border-[1px] border-lightgray relative z-0 rounded-lg p-2 text-lg max-w-full"
                         />
                         <span 
-                          className='absolute mt-2 right-[50%] cursor-pointer'
-                          onClick={()=>{setShowPassword((prev) => !prev)}}>
+                          className='absolute mt-2 right-[51%] cursor-pointer'
+                          onClick={()=>{setShowConfirmPassword((prev) => !prev)}}>
                               {
                                   showConfirmPassword ? 
                                   (<AiOutlineEye fontSize={24} fill="#AFB2BF"/>) : 
@@ -92,11 +108,11 @@ function submitHandler(event){
                               }
                         </span>
 
-                        <input type="tel" id="phone" placeholder="Phone No.*" className="w-full mb-4 border-[1px] border-lightgray rounded-lg p-2 text-lg max-w-full"/>
+                        <input type="tel" value={formData.phone} onChange={changeHandler} name="phone" placeholder="Phone No.*" className="w-full mb-4 border-[1px] border-lightgray rounded-lg p-2 text-lg max-w-full"/>
 
                     </div>
-                    <input type="submit" onclick="store()" id="submit" value="Register" className="rounded-full py-2 text-xl my-4 text-white bg-orange border-none w-full"/>
-                    <p>Have an account? <Link to="/login" className="text-orange hover:text-red-600">Log In</Link> </p>
+                    <button type="submit" className="rounded-full py-2 text-xl my-4 text-white bg-orange border-none w-full">Register</button>
+                    <p>Have an account? <button><Link to="/login" className="text-orange hover:underline"> Log In</Link> </button> </p>
                     </div>
 
             </form>
