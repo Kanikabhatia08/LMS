@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import signupImg from '../images/signup.jpg'
 import { Link, useNavigate} from 'react-router-dom';
 import { AiOutlineEye,AiOutlineEyeInvisible } from "react-icons/ai";
@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
 
 function Signup({setIsLoggedIn}) {
 
-  const [storedUsers, setStoredUsers] = useState([])
+  // const [storedUsers, setStoredUsers] = useState([])
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -78,11 +78,11 @@ function submitHandler(event){
   return (
     <div>
       <section className="max-w-[80%] mx-auto justify-center gap-10 flex">
-            <div className="max-w-[45%] my-16 order-2">
-                <img src={signupImg} alt='Signup' className="rounded-[80px]"/>
+            <div className="max-w-[40%] my-16 order-2">
+                <img src={signupImg} alt='Signup' laoding='lazy' className="rounded-[80px]"/>
             </div>
             <form onSubmit={submitHandler}>
-                <div className=" border-[1px] order-1 mt-28 border-lightgray py-16 rounded-2xl shadow-lg p-9 ">
+                <div className=" border-[1px] order-1 my-[12%] border-lightgray rounded-2xl shadow-lg p-9 ">
                     <h1 className="text-3xl font-semibold">Register</h1>
                     <div className="flex-col ">
                         <input 
@@ -102,7 +102,7 @@ function submitHandler(event){
                           className="w-full mb-4 border-[1px] relative border-lightgray rounded-lg p-2 text-lg max-w-full"
                         />
                         <span 
-                          className='absolute mt-2 right-[51%] cursor-pointer'
+                          className='absolute mt-2 right-[47%] cursor-pointer'
                           onClick={()=>{setShowPassword((prev) => !prev)}}>
                               {
                                   showPassword ? 
@@ -119,7 +119,7 @@ function submitHandler(event){
                           className="w-full mb-4 border-[1px] border-lightgray relative z-0 rounded-lg p-2 text-lg max-w-full"
                         />
                         <span 
-                          className='absolute mt-2 right-[51%] cursor-pointer'
+                          className='absolute mt-2 right-[47%] cursor-pointer'
                           onClick={()=>{setShowConfirmPassword((prev) => !prev)}}>
                               {
                                   showConfirmPassword ? 

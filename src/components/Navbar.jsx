@@ -1,14 +1,20 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import logo from "../images/LOGO.jpg"
 import toast from 'react-hot-toast';
 import search from '../images/Search.png'
 import { IoMdArrowDropdown } from "react-icons/io";
+import { MdOutlineKeyboardArrowRight } from "react-icons/md";
+
 
 
 function Navbar({isLoggedIn, setIsLoggedIn}) {
 
     const [isOpen, setIsOpen] = useState(false);
+    let location = useLocation();
+    let loc = window.location.pathname.split("/").splice(-1)[0]
+    console.log(loc);
+
 
     return (
         <div className=''>
@@ -80,17 +86,39 @@ function Navbar({isLoggedIn, setIsLoggedIn}) {
                             </button>
                         </Link>
                     }
-                    <img src={search} alt="Search Icon"/>
+                    {
+                        !isLoggedIn &&
+                        <img src={search} alt="Search Icon"/> 
+                    }
+                    {
+                        isLoggedIn &&
+                        <Link to="/cart" class="relative ">
+                            <svg aria-hidden="true" className='text-black w-7 mt-2' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 15a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0h8m-8 0-1-4m9 4a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-9-4h10l2-7H3m2 7L3 4m0 0-.792-3H1"/>
+                            </svg>
+                            <span className='absolute bg-red-600 w-6 h-6 flex justify-center items-center text-center mx-auto rounded-full text-white top-[50%] -right-3'>0</span>
+                        </Link>
+                    }
                 </div>
 
 
             </nav>
             {/* path  */}
-            <div className='bg-footer py-4'>
-                {
-                    
-                }
-            </div>
+            {
+                (loc) ?
+                (<div className='bg-footer py-3'>
+                    {
+                        <span className='max-w-[80%] text-xl text-gray flex mx-auto'>Home <MdOutlineKeyboardArrowRight  className='m-[5px]'/> { loc}</span>
+                    }
+                </div>) 
+                :
+                (
+                    <div>
+
+                    </div>
+                )
+            }
+            
         </div>
     )
 }

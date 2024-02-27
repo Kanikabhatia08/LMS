@@ -8,6 +8,7 @@ import { useState } from 'react';
 import Footer from './components/Footer';
 import PrivateLink from './components/PrivateLink';
 import Error from './pages/Error';
+import Cart from './pages/Cart';
 
 function App() {
 
@@ -23,11 +24,17 @@ function App() {
             <Courses />
           </PrivateLink>
         }/>
+        <Route path="/cart" element={
+          <PrivateLink isLoggedIn={isLoggedIn}>
+            <Cart />
+          </PrivateLink>
+        }/>
         <Route path= "/login" element={<Login setIsLoggedIn={setIsLoggedIn} />}/>
         <Route path= "/signup" element={<Signup setIsLoggedIn={setIsLoggedIn} />}/>
         <Route path= "/blogs" element={<Signup setIsLoggedIn={setIsLoggedIn} />}/>
         <Route path= "/faqs" element={<Signup setIsLoggedIn={setIsLoggedIn} />}/>
         <Route path= "/contactUs" element={<Signup setIsLoggedIn={setIsLoggedIn} />}/>
+        
         <Route path= "/*" element={<Error/>}/>
       </Routes>
       <Footer/>

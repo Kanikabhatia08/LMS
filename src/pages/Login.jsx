@@ -16,6 +16,7 @@ function Login({setIsLoggedIn}) {
   
   function submitHandler(event){
     event.preventDefault();
+    
     let storedUsers = JSON.parse(localStorage.getItem('formData'))
     console.log(storedUsers,"userssssssssss")
     if(storedUsers){
@@ -39,7 +40,6 @@ function Login({setIsLoggedIn}) {
       }
       else{
         setIsLoggedIn(true);
-        toast.success("Logged In");
         navigate("/courses")
       }
     }
@@ -62,11 +62,11 @@ function Login({setIsLoggedIn}) {
     return (
     <div>
       <section className='flex justify-center mx-auto max-w-[80%]'>
-        <div className="max-w-[50%]">
-          <img src={loginImg} alt='login'/>
+        <div className="sm:hidden lg:block lg:max-w-[50%] xl:max-w-[45%] sm:my-[20%] lg:my-0">
+          <img src={loginImg} alt='login' loading='lazy'/>
         </div>
         <form onSubmit={submitHandler}>
-          <div className='border-[1px] mt-36 border-lightgray rounded-2xl p-9 shadow-lg'>
+          <div className='border-[1px] my-[20%] border-lightgray rounded-2xl p-9 shadow-lg'>
             <h1 className="text-3xl font-semibold">Login</h1>
             <div>
               <input 
@@ -88,7 +88,7 @@ function Login({setIsLoggedIn}) {
               />
 
               <span 
-                className='absolute mt-[9px] cursor-pointer z-10 right-[15%]'
+                className='absolute mt-[9px] cursor-pointer z-10 right-[17%]'
                 onClick={()=>{setShowPassword((prev) => !prev)}}>
                     {
                         showPassword ? 

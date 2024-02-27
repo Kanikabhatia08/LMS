@@ -1,5 +1,6 @@
 import React from 'react'
 import Flogo from '../images/logoFooter.png'
+import { Link } from 'react-router-dom'
 
 function Footer() {
     return (
@@ -18,13 +19,13 @@ function Footer() {
                     <h5 className="text-uppercase text-2xl font-semibold">Get help</h5>
                     <ul className="py-7 text-gray font-jost lg:text-base 2xl:text-xl leading-10">
                         <li>
-                            <a href="#!" className="hover:text-orange hover:no-underline">Contact Us</a>
+                            <Link to="/contactUs" className="hover:text-orange hover:no-underline">Contact Us</Link>
                         </li>
                         <li>
-                            <a href="#!" className="hover:text-orange hover:no-underline">Latest Articles</a>
+                            <Link to="/blogs" className="hover:text-orange hover:no-underline">Latest Articles</Link>
                         </li>
                         <li>
-                            <a href="#!" className="hover:text-orange hover:no-underline">FAQ</a>
+                            <Link to="/faqs" className="hover:text-orange hover:no-underline">FAQ</Link>
                         </li>
                         
                     </ul>
