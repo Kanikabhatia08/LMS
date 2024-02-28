@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import loginImg from '../images/login.jpg'
@@ -11,9 +11,9 @@ function Login({setIsLoggedIn}) {
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     email:"",
-    password:""
+    password:"",
   });
-  
+
   function submitHandler(event){
     event.preventDefault();
     
@@ -22,6 +22,8 @@ function Login({setIsLoggedIn}) {
     if(storedUsers){
       storedUsers.forEach((users) =>{
         if(formData.email == users.email && formData.password == users.password){
+          localStorage.setItem("setIsLoggedIn", JSON.stringify(true));
+          setIsLoggedIn(true);
           toast.success("You are logged in");
         }
       })

@@ -7,7 +7,7 @@ function Courses() {
 
   return (
 
-    <div class="max-w-[73%] mx-auto justify-center">
+    <div className="max-w-[73%] mx-auto justify-center">
       <header className='flex justify-between items-center '>
           <div className="text-3xl font-semibold p-4">COURSE LIST</div>
       </header>

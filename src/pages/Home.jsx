@@ -144,39 +144,39 @@ function Home() {
       </div>
 
       {/* Feedbacks */}
-      <div class="mx-auto justify-center text-center">
+      <div className="mx-auto justify-center text-center">
                 <div>
-                    <h1 class="text-3xl font-semibold py-2">Student feedbacks</h1>
-                    <h3 class="text-gray font-jost text-xl">What Students Say About Academy LMS</h3>
+                    <h1 className="text-3xl font-semibold py-2">Student feedbacks</h1>
+                    <h3 className="text-gray font-jost text-xl">What Students Say About Academy LMS</h3>
                 </div>
                 <div>
-                    <div class="row gap-4 mt-10 max-w-[95%] justify-center mx-auto text-left">
-                        <div class="col border-lightgray border-2 rounded-2xl p-8">
+                    <div className="row gap-4 mt-10 max-w-[95%] justify-center mx-auto text-left">
+                        <div className="col border-lightgray border-2 rounded-2xl p-8">
                             <img src={quotes}/>
-                            <p class="text-lg py-3">I must explain to you how all this mistaken . Tdea of denouncing pleasure and praising pain was born and I will give you a complete account of the system and expound</p>
-                            <h2 class="text-xl font-semibold">Taylor Swift</h2>
-                            <p class="text-gray">Designer</p>
+                            <p className="text-lg py-3">I must explain to you how all this mistaken . Tdea of denouncing pleasure and praising pain was born and I will give you a complete account of the system and expound</p>
+                            <h2 className="text-xl font-semibold">Taylor Swift</h2>
+                            <p className="text-gray">Designer</p>
                         </div>
 
-                        <div class="col border-lightgray border-2 rounded-2xl p-8">
+                        <div className="col border-lightgray border-2 rounded-2xl p-8">
                             <img src={quotes}/>
-                            <p class="text-lg py-3">I must explain to you how all this mistaken . Tdea of denouncing pleasure and praising pain was born and I will give you a complete account of the system and expound</p>
-                            <h2 class="text-xl font-semibold">Selena Gomez</h2>
-                            <p class="text-gray">Developer</p>
+                            <p className="text-lg py-3">I must explain to you how all this mistaken . Tdea of denouncing pleasure and praising pain was born and I will give you a complete account of the system and expound</p>
+                            <h2 className="text-xl font-semibold">Selena Gomez</h2>
+                            <p className="text-gray">Developer</p>
                         </div>
 
-                        <div class="col border-lightgray border-2 rounded-2xl p-8">
+                        <div className="col border-lightgray border-2 rounded-2xl p-8">
                             <img src={quotes}/>
-                            <p class="text-lg py-3">I must explain to you how all this mistaken . Tdea of denouncing pleasure and praising pain was born and I will give you a complete account of the system and expound</p>
-                            <h2 class="text-xl font-semibold">Harry Styles</h2>
-                            <p class="text-gray">Designer</p>
+                            <p className="text-lg py-3">I must explain to you how all this mistaken . Tdea of denouncing pleasure and praising pain was born and I will give you a complete account of the system and expound</p>
+                            <h2 className="text-xl font-semibold">Harry Styles</h2>
+                            <p className="text-gray">Designer</p>
                         </div>
 
-                        <div class="col border-lightgray border-2 rounded-2xl p-8">
+                        <div className="col border-lightgray border-2 rounded-2xl p-8">
                             <img src={quotes}/>
-                            <p class="text-lg py-3">I must explain to you how all this mistaken . Tdea of denouncing pleasure and praising pain was born and I will give you a complete account of the system and expound</p>
-                            <h2 class="text-xl font-semibold">Justin Bieber</h2>
-                            <p class="text-gray">Java Instructor</p>   
+                            <p className="text-lg py-3">I must explain to you how all this mistaken . Tdea of denouncing pleasure and praising pain was born and I will give you a complete account of the system and expound</p>
+                            <h2 className="text-xl font-semibold">Justin Bieber</h2>
+                            <p className="text-gray">Java Instructor</p>   
                         </div>
 
                     </div>

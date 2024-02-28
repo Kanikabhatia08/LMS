@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import CartItem from '../components/CartItem'
 import { useSelector } from 'react-redux'
@@ -6,8 +6,21 @@ import { useSelector } from 'react-redux'
 function Cart() {
 
     const {cart} = useSelector((state) => state);
-    console.log(cart,"printingg cartt")
+    // console.log(cart,"printingg cartt")
     const [totalAmount, setTotalAmount] = useState(0);
+    var sum = 0;
+
+    useEffect(()=>{
+        cart.forEach((element) => {
+            // totalAmount = totalAmount + (element.count*element.price)
+            sum =sum + (element.count*element.price);
+            setTotalAmount(sum)
+            
+        });
+        
+    },[cart])
+
+
     return (
         <div>
             {

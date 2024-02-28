@@ -164,56 +164,49 @@ export const products = [
         "name":" One Week JS",
         "price": 290,
         "image": p3,
-        "count" : 1,
-        "total" : 0
+        "count" : 1
     },
     {
         "id": 4,
         "name":" PHP & Laravel",
         "price": 200,
         "image": p4,
-        "count" : 1,
-        "total" : 0
+        "count" : 1
     },
     {
         "id": 5,
         "name":" Digital Marketing",
         "price": 300,
         "image": p5,
-        "count" : 1,
-        "total" : 0
+        "count" : 1
     },
     {
         "id": 6,
         "name":" Testing & QA",
         "price": 200,
         "image": p6,
-        "count" : 1,
-        "total" : 0
+        "count" : 1
     },
     {
         "id": 7,
         "name":" UI UX Design",
         "price": 200,
         "image": p7,
-        "count" : 1,
-        "total" : 0
+        "count" : 1
     },
     {
         "id": 8,
         "name":" Cyber Security",
         "price": 200,
         "image": p8,
-        "count" : 1,
-        "total" : 0
+        "count" : 1
     },
     {
         "id": 9,
         "name":" Learn DevOps",
         "price": 200,
         "image": p9,
-        "count" : 1,
-        "total" : 0
+        "count" : 1 
     }
 
 ]

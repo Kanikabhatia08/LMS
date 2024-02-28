@@ -23,6 +23,7 @@ export const CartSlice = createSlice({
                 return element;
             }
             )
+            
         },
         decrement: (state, action) => {
             state = state.map((element) =>{

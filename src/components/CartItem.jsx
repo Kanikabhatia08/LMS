@@ -10,13 +10,25 @@ function CartItem({item}) {
     const dispatch = useDispatch();
     const [total, setTotal] = useState();
 
+
     const incrementHandler = ()=>{
         dispatch(increment(item.id))
         // setCount(count+1);
     }
+
     useEffect( () => {
-        setTotal( cart.reduce( (acc, curr) => acc + curr.itemTotal,0) );
+        setTotal( item.count*item.price );
+        console.log([total])
     }, [cart])
+
+    // useEffect( () => {
+    //     setTotalAmount( total.reduce( (acc, curr) => acc + curr.total,0) );
+    //     console.log(total)
+    // }, [cart])
+
+    // const amount = (totalAmount) =>{
+    //     console.log(totalAmount)
+    // }
 
     const decrementHandler = () =>{
         dispatch(decrement(item.id))
@@ -38,7 +50,7 @@ function CartItem({item}) {
                     <div className='flex justify-between items-center text-xl'>
                         <div>
                             <p>${item.price}</p>
-                            <p>Total: <span className='text-green-600' name="itemTotal"> ${item.price*item.count}</span></p>
+                            <p>Total: <span className='text-green-600' name="itemTotal"> ${total}</span></p>
                         </div>
                         
                         <div className='flex gap-3 border-1 border-footer'>

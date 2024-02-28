@@ -22,7 +22,7 @@ const Product = ({post}) => {
     return (
         <div>
             <div className='bg-lightgray py-3'>
-                <img className='shadow-lg w-[90%] my-4 ml-7' src={post.image} alt="course" />
+                <img className='shadow-lg w-[90%] my-4 mx-auto' src={post.image} alt="course" />
                 <h1 className='text-2xl font-semibold '>{post.name}</h1>
                 <p className='leading-2 tracking-wider text-xl'>${post.price}</p>
                 {
