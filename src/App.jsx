@@ -9,27 +9,28 @@ import Footer from './components/Footer';
 import PrivateLink from './components/PrivateLink';
 import Error from './pages/Error';
 import Cart from './pages/Cart';
+import { useDispatch, useSelector } from 'react-redux';
+// import { authenticate } from './redux/slices/LoginSlice';localocalStoragelStorage
 
 function App() {
 
-  const authenticated = () => {
-    const loggedInUser = localStorage.getItem('setIsLoggedIn');
-    if (loggedInUser === 'true') {
-      return true
-    }
-    return (false)
-  }
+  // const authenticated = () => {
+  //   const loggedInUser = localStorage.getItem('setIsLoggedIn');
+  //   if (loggedInUser === 'true') {
+  //     return true
+  //   }
+  //   return (false)
+  // }
+  // const dispatch = useDispatch()
   
-  const [isLoggedIn, setIsLoggedIn] = useState(authenticated());
-  console.log(isLoggedIn, "appppppppppp1")
+  // const [isLoggedIn, setIsLoggedIn] = useState();
+  // console.log(isLoggedIn, "appppppppppp1")
+  const {loggedInUser:isLoggedIn} = useSelector((state) => state)
 
   // console.log(isLoggedIn,"appppppppppp2")
 
-  
-
   // useEffect(() => {
-  // const loggedInUser = localStorage.getItem('setIsLoggedIn');
-
+  //   const loggedInUser = localStorage.getItem('setIsLoggedIn');
   //   console.log(loggedInUser, "logeed in")
   //   loggedInUser ? (setIsLoggedIn(true)) : (setIsLoggedIn(false))
   // }, [])
@@ -37,7 +38,7 @@ function App() {
 
   return (
     <div>
-      <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+      <Navbar isLoggedIn={isLoggedIn}  />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/courses" element={
@@ -50,11 +51,11 @@ function App() {
             <Cart />
           </PrivateLink>
         } />
-        <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
-        <Route path="/signup" element={<Signup setIsLoggedIn={setIsLoggedIn} />} />
-        <Route path="/blogs" element={<Signup setIsLoggedIn={setIsLoggedIn} />} />
-        <Route path="/faqs" element={<Signup setIsLoggedIn={setIsLoggedIn} />} />
-        <Route path="/contactUs" element={<Signup setIsLoggedIn={setIsLoggedIn} />} />
+        <Route path="/login" element={<Login/>} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/blogs" element={<Signup />} />
+        <Route path="/faqs" element={<Signup />} />
+        <Route path="/contactUs" element={<Signup />} />
 
         <Route path="/*" element={<Error />} />
       </Routes>

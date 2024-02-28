@@ -3,11 +3,14 @@ import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import loginImg from '../images/login.jpg'
 import { AiOutlineEye,AiOutlineEyeInvisible } from "react-icons/ai";
+import { useDispatch } from 'react-redux';
+import { authenticate } from '../redux/slices/LoginSlice';
 
 
-function Login({setIsLoggedIn}) {
+function Login() {
 
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     email:"",
@@ -16,14 +19,14 @@ function Login({setIsLoggedIn}) {
 
   function submitHandler(event){
     event.preventDefault();
-    
+    dispatch(authenticate())
     let storedUsers = JSON.parse(localStorage.getItem('formData'))
     console.log(storedUsers,"userssssssssss")
     if(storedUsers){
       storedUsers.forEach((users) =>{
         if(formData.email == users.email && formData.password == users.password){
           localStorage.setItem("setIsLoggedIn", JSON.stringify(true));
-          setIsLoggedIn(true);
+          // setIsLoggedIn(true);
           toast.success("You are logged in");
         }
       })
@@ -41,7 +44,8 @@ function Login({setIsLoggedIn}) {
         toast.error("Password should be more than 6 characters")
       }
       else{
-        setIsLoggedIn(true);
+        // setIsLoggedIn(true);
+        dispatch(authenticate())
         navigate("/courses")
       }
     }

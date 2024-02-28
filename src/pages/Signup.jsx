@@ -3,8 +3,10 @@ import signupImg from '../images/signup.jpg'
 import { Link, useNavigate} from 'react-router-dom';
 import { AiOutlineEye,AiOutlineEyeInvisible } from "react-icons/ai";
 import toast from 'react-hot-toast';
+import { useDispatch } from 'react-redux';
+import { authenticate } from '../redux/slices/LoginSlice';
 
-function Signup({setIsLoggedIn}) {
+function Signup() {
 
   // const [storedUsers, setStoredUsers] = useState([])
   const [formData, setFormData] = useState({
@@ -13,7 +15,7 @@ function Signup({setIsLoggedIn}) {
     confirmPassword: "",
     phone: ""
   });
-
+  const dispatch = useDispatch()
   const navigate = useNavigate()
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -68,7 +70,8 @@ function submitHandler(event){
       else{
         localStorage.setItem("formData", JSON.stringify([formData]))
       }
-      setIsLoggedIn(true)
+      // setIsLoggedIn(true)
+      dispatch(authenticate())
       toast.success("Account Created")
       navigate("/Courses")
     }
