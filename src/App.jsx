@@ -10,6 +10,9 @@ import PrivateLink from './components/PrivateLink';
 import Error from './pages/Error';
 import Cart from './pages/Cart';
 import { useDispatch, useSelector } from 'react-redux';
+import FAQs from './pages/FAQs';
+import ContactUs from './pages/ContactUs';
+import Blogs from './pages/Blogs';
 // import { authenticate } from './redux/slices/LoginSlice';localocalStoragelStorage
 
 function App() {
@@ -25,7 +28,7 @@ function App() {
   
   // const [isLoggedIn, setIsLoggedIn] = useState();
   // console.log(isLoggedIn, "appppppppppp1")
-  const {loggedInUser:isLoggedIn} = useSelector((state) => state)
+  // const {loggedInUser:isLoggedIn} = useSelector((state) => state)
 
   // console.log(isLoggedIn,"appppppppppp2")
 
@@ -38,24 +41,24 @@ function App() {
 
   return (
     <div>
-      <Navbar isLoggedIn={isLoggedIn}  />
+      <Navbar  />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/courses" element={
-          <PrivateLink isLoggedIn={isLoggedIn}>
+          <PrivateLink >
             <Courses />
           </PrivateLink>
         } />
         <Route path="/cart" element={
-          <PrivateLink isLoggedIn={isLoggedIn} >
+          <PrivateLink  >
             <Cart />
           </PrivateLink>
         } />
         <Route path="/login" element={<Login/>} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/blogs" element={<Signup />} />
-        <Route path="/faqs" element={<Signup />} />
-        <Route path="/contactUs" element={<Signup />} />
+        <Route path="/blogs" element={<Blogs />} />
+        <Route path="/faqs" element={<FAQs />} />
+        <Route path="/contactUs" element={<ContactUs />} />
 
         <Route path="/*" element={<Error />} />
       </Routes>
