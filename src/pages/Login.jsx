@@ -3,8 +3,9 @@ import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import loginImg from '../images/login.jpg'
 import { AiOutlineEye,AiOutlineEyeInvisible } from "react-icons/ai";
-import { useDispatch } from 'react-redux';
-import { authenticate } from '../redux/slices/LoginSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { authenticate, registerUser } from '../redux/slices/LoginSlice';
+import { getUsers } from '../redux/slices/authSlice';
 
 
 function Login() {
@@ -17,26 +18,27 @@ function Login() {
     password:"",
   });
 
+  const state = useSelector((state) => state)
+  console.log(state)
+
+  useEffect(()=>{
+    dispatch(getUsers())
+  },[])
+
   function submitHandler(event){
     event.preventDefault();
-    dispatch(authenticate())
-    let storedUsers = JSON.parse(localStorage.getItem('formData'))
-    console.log(storedUsers,"userssssssssss")
-    if(storedUsers){
-      storedUsers.forEach((users) =>{
-        if(formData.email == users.email && formData.password == users.password){
-          localStorage.setItem("setIsLoggedIn", JSON.stringify(true));
-          // setIsLoggedIn(true);
-          toast.success("You are logged in");
-        }
-      })
-      
-    }
-    else{
-      toast.error("Valid email & password required")
-    }
-
-    if(storedUsers){
+    
+    // let storedUsers = JSON.parse(localStorage.getItem('formData'))
+    // console.log(storedUsers,"userssssssssss")
+    // if(storedUsers){
+    //   storedUsers.forEach((users) =>{
+    //     if(formData.email == users.email && formData.password == users.password){
+    //       localStorage.setItem("setIsLoggedIn", JSON.stringify(true));
+    //       // setIsLoggedIn(true);
+    //       toast.success("You are logged in");
+    //     }
+    //   })
+    if(formData){
       if(formData.email.length === 0 || formData.password.length === 0){
         toast.error("Enter Email & Password");
       }
@@ -44,15 +46,32 @@ function Login() {
         toast.error("Password should be more than 6 characters")
       }
       else{
+        
         // setIsLoggedIn(true);
-        dispatch(authenticate())
-        navigate("/courses")
+        if(state?.users){
+          var match = false;
+          console.log(state?.users,"state?.usersstate?.users");
+          state?.users?.data?.map((user)=>{
+            if(formData.email == user.email && formData.password == user.password){
+                localStorage.setItem("setIsLoggedIn", JSON.stringify(true));
+                toast.success("You are logged in")
+                match = true;
+            } 
+            else{
+              toast.error("Valid email & password required")
+          }
+          
+        })
+        {(match ?? navigate("/Courses"))}
+      }
       }
     }
     else{
       toast.error("Please signup to create an account")
     } 
-  }
+
+    
+}
 
   function changeHandler(event){
     setFormData( (prevData) => (
@@ -117,4 +136,4 @@ function Login() {
   )
 }
 
-export default Login
+export default Login;

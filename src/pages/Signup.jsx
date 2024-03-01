@@ -4,7 +4,7 @@ import { Link, useNavigate} from 'react-router-dom';
 import { AiOutlineEye,AiOutlineEyeInvisible } from "react-icons/ai";
 import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
-import { authenticate } from '../redux/slices/LoginSlice';
+import { registerUser } from '../redux/slices/authSlice';
 
 function Signup() {
 
@@ -35,8 +35,7 @@ function Signup() {
 
 function submitHandler(event){
   event.preventDefault();
-   
-    
+
     if(formData.email.length === 0 && formData.password.length === 0){
       toast.error("Enter Email & Password");
     }
@@ -62,18 +61,22 @@ function submitHandler(event){
       // }
       // alert('Your account has been created');  
 
-      let storedUsers = JSON.parse(localStorage.getItem('formData'));
-      if(storedUsers){
-        storedUsers.push(formData);
-        localStorage.setItem("formData", JSON.stringify(storedUsers))
-      }
-      else{
-        localStorage.setItem("formData", JSON.stringify([formData]))
-      }
+      // let storedUsers = JSON.parse(localStorage.getItem('formData'));
+      // if(storedUsers){
+      //   storedUsers.push(formData);
+      //   localStorage.setItem("formData", JSON.stringify(storedUsers))
+      // }
+      // else{
+      //   localStorage.setItem("formData", JSON.stringify([formData]))
+      // }
       // setIsLoggedIn(true)
-      dispatch(authenticate())
-      toast.success("Account Created")
       navigate("/Courses")
+      dispatch(registerUser(formData))
+      localStorage.setItem("setIsLoggedIn", JSON.stringify(true));
+
+      console.log(formData)
+      toast.success("Account Created")
+      
     }
     
 }
