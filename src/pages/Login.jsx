@@ -4,8 +4,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import loginImg from '../images/login.jpg'
 import { AiOutlineEye,AiOutlineEyeInvisible } from "react-icons/ai";
 import { useDispatch, useSelector } from 'react-redux';
-import { authenticate, registerUser } from '../redux/slices/LoginSlice';
 import { getUsers } from '../redux/slices/authSlice';
+import { authenticate } from '../redux/slices/LoginSlice';
 
 
 function Login() {
@@ -19,7 +19,7 @@ function Login() {
   });
 
   const state = useSelector((state) => state)
-  console.log(state)
+  // console.log(state)
 
   useEffect(()=>{
     dispatch(getUsers())
@@ -46,15 +46,19 @@ function Login() {
         toast.error("Password should be more than 6 characters")
       }
       else{
-        
+        // 2 baar logged in kyu aa rha hai????????
         // setIsLoggedIn(true);
         if(state?.users){
           var match = false;
+          // console.log(match,"111111111111111111")
           console.log(state?.users,"state?.usersstate?.users");
           state?.users?.data?.map((user)=>{
             if(formData.email == user.email && formData.password == user.password){
                 localStorage.setItem("setIsLoggedIn", JSON.stringify(true));
+                dispatch(authenticate(true))
                 toast.success("You are logged in")
+          // console.log(match,"22222222222")
+
                 match = true;
             } 
             else{
@@ -62,7 +66,12 @@ function Login() {
           }
           
         })
-        {(match ?? navigate("/Courses"))}
+        console.log(match,"333333333333333")
+
+        {(match ? 
+          (navigate("/Courses"))
+          :
+          (navigate("/Login")))}
       }
       }
     }

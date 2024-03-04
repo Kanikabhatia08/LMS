@@ -5,6 +5,7 @@ LMS
     - add to cart and remove from cart (using store)
     - counter for cart items
     - defined routes
+    
 New Concepts :
     - API call using store/slice (extrareducers)
     - createAsyncThunk concept

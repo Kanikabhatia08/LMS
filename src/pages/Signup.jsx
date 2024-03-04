@@ -1,14 +1,18 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import signupImg from '../images/signup.jpg'
 import { Link, useNavigate} from 'react-router-dom';
 import { AiOutlineEye,AiOutlineEyeInvisible } from "react-icons/ai";
 import toast from 'react-hot-toast';
-import { useDispatch } from 'react-redux';
-import { registerUser } from '../redux/slices/authSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import authSlice, { registerUser } from '../redux/slices/authSlice';
+import { getUsers } from '../redux/slices/authSlice';
+import { authenticate } from '../redux/slices/LoginSlice';
+
 
 function Signup() {
 
   // const [storedUsers, setStoredUsers] = useState([])
+  const state = useSelector((state) => state)
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -19,6 +23,31 @@ function Signup() {
   const navigate = useNavigate()
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  //password checkk
+  const checkPassword =(pass) =>{
+    const isContainsLowercase = /^(?=.*[a-z]).*$/;
+  if (!isContainsLowercase.test(pass)) {
+    toast.error("Password must have at least one Lowercase Character.") ;
+  }
+
+  const isContainsNumber = /^(?=.*[0-9]).*$/;
+  if (!isContainsNumber.test(pass)) {
+    toast.error("Password must contain at least one Digit.");
+  }
+
+  const isContainsSymbol =
+    /^(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹]).*$/;
+  if (!isContainsSymbol.test(pass)) {
+    toast.error( "Password must contain at least one Special Symbol.");
+  }
+
+  const isValidLength = /^.{8,20}$/;
+  if (!isValidLength.test(pass)) {
+    toast.error ("Password must be 8-20 Characters Long.");
+  }
+  return;
+  }
   
   function changeHandler(event){
     setFormData( (prevData) => (
@@ -28,6 +57,9 @@ function Signup() {
         }
     ))
 }
+useEffect(()=>{
+  dispatch(getUsers())
+},[])
 // useEffect(()=>{
 //   console.log(formData,"dataa stored")
 //   localStorage.setItem("formData", JSON.stringify(formData))
@@ -38,18 +70,40 @@ function submitHandler(event){
 
     if(formData.email.length === 0 && formData.password.length === 0){
       toast.error("Enter Email & Password");
+      return;
+
     }
-    else if(formData.password !== formData.confirmPassword){
+    if(formData.password !== formData.confirmPassword){
         toast.error("Passwords do not Match!")
-        return;
+
     }
-    else if(formData.password.length < 6 && formData.confirmPassword.length < 6 ){
-        toast.error("Password should contain 6 digits")
-    }
-    else if(formData.phone.length < 10 || formData.phone.length > 10){
+    if(formData.phone.length < 10 || formData.phone.length > 10){
       toast.error("Phone number should be of 10 numbers")
+
     }
+    if(formData.password){
+      checkPassword(formData.password); 
+    }
+    
+    if(state?.users.length >=1){
+      console.log(formData,"formmmmmmmm")
+
+      state?.users?.data?.map((user) =>{
+        if(user.email == formData.email){
+          toast.error("User already exists")
+        }
+      })
+      return;
+    }
+
     else{
+      // console.log(formData,"formmmmmmmm")  
+      localStorage.setItem("setIsLoggedIn", JSON.stringify(true));
+      dispatch(registerUser(formData))
+      dispatch(authenticate(true));
+      navigate("/Courses")
+      toast.success("Account Created")
+    }
       // let stored_users = JSON.parse(localStorage.getItem('users'));
       // console.log(stored_users, "hi", localStorage.getItem('users'))
       // if(stored_users) {
@@ -70,14 +124,25 @@ function submitHandler(event){
       //   localStorage.setItem("formData", JSON.stringify([formData]))
       // }
       // setIsLoggedIn(true)
-      navigate("/Courses")
-      dispatch(registerUser(formData))
-      localStorage.setItem("setIsLoggedIn", JSON.stringify(true));
-
-      console.log(formData)
-      toast.success("Account Created")
-      
-    }
+      // if(state?.users){
+      //   // console.log(state.users)
+      //   state?.users?.data?.map((user) =>{
+      //     if(user.email == formData.email){
+      //       toast.error("User already exists")
+      //     }
+      //     else{
+      //       localStorage.setItem("setIsLoggedIn", JSON.stringify(true));
+      //       dispatch(registerUser(formData))
+      //       dispatch(authenticate(true));
+      //       navigate("/Courses")
+      //       // console.log(formData)
+      //       toast.success("Account Created")
+      //     }
+      //   })
+        
+      // }
+    
+    
     
 }
 
