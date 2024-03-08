@@ -53,7 +53,7 @@ function Login() {
           // console.log(match,"111111111111111111")
           console.log(state?.users,"state?.usersstate?.users");
           state?.users?.data?.map((user)=>{
-            if(formData.email == user.email && formData.password == user.password){
+            if(formData.email === user.email && formData.password === user.password){
                 localStorage.setItem("setIsLoggedIn", JSON.stringify(true));
                 dispatch(authenticate(true))
                 toast.success("You are logged in")

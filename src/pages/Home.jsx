@@ -74,7 +74,7 @@ function Home() {
 
       <div className="flex mx-auto justify-center my-10">
         <div className="relative">
-            <img src={AddOn1}/>
+            <img src={AddOn1} alt='addOn1'/>
         </div>
         <div className="absolute max-w-[25%] left-[14%] m-[3%]">
             <h3 className="text-gray text-xl">GET MORE POWER FROM</h3>

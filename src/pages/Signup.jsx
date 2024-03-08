@@ -4,7 +4,7 @@ import { Link, useNavigate} from 'react-router-dom';
 import { AiOutlineEye,AiOutlineEyeInvisible } from "react-icons/ai";
 import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
-import authSlice, { registerUser } from '../redux/slices/authSlice';
+import { registerUser } from '../redux/slices/authSlice';
 import { getUsers } from '../redux/slices/authSlice';
 import { authenticate } from '../redux/slices/LoginSlice';
 
@@ -89,7 +89,7 @@ function submitHandler(event){
       console.log(formData,"formmmmmmmm")
 
       state?.users?.data?.map((user) =>{
-        if(user.email == formData.email){
+        if(user.email === formData.email){
           toast.error("User already exists")
         }
       })
