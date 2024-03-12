@@ -61,11 +61,12 @@ function Login() {
 
                 match = true;
             } 
-            else{
-              toast.error("Valid email & password required")
-          }
+            
           
         })
+        if(match === false){
+          toast.error("Valid email & password required")
+      }
         console.log(match,"333333333333333")
 
         {(match ? 

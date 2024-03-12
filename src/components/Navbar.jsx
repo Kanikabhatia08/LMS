@@ -15,7 +15,7 @@ function Navbar() {
 
     const [isOpen, setIsOpen] = useState(false);
     let location = useLocation();
-   const {loggedInUser:isLoggedIn} = useSelector((state) => state)
+    const {loggedInUser:isLoggedIn} = useSelector((state) => state)
 
     let loc = window.location.pathname.split("/").splice(-1)[0]
     // console.log(loc);
