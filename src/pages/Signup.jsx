@@ -86,7 +86,7 @@ function submitHandler(event){
     }
     
     if(state?.users.length >=1){
-      console.log(formData,"formmmmmmmm")
+      // console.log(formData,"formmmmmmmm")
 
       state?.users?.data?.map((user) =>{
         if(user.email === formData.email){
@@ -97,7 +97,6 @@ function submitHandler(event){
     }
 
     else{
-      // console.log(formData,"formmmmmmmm")  
       localStorage.setItem("setIsLoggedIn", JSON.stringify(true));
       dispatch(registerUser(formData))
       dispatch(authenticate(true));
@@ -141,72 +140,69 @@ function submitHandler(event){
       //   })
         
       // }
-    
-    
-    
 }
 
   return (
     <div>
       <section className="max-w-[80%] mx-auto justify-center gap-10 flex">
-            <div className="max-w-[40%] my-16 order-2">
-                <img src={signupImg} alt='Signup' laoding='lazy' className="rounded-[80px]"/>
+        <div className="max-w-[40%] my-16 order-2">
+            <img src={signupImg} alt='Signup' laoding='lazy' className="rounded-[80px]"/>
+        </div>
+
+        <form onSubmit={submitHandler}>
+          <div className=" border-[1px] order-1 my-[12%] border-lightgray rounded-2xl shadow-lg p-9 ">
+            <h1 className="text-3xl font-semibold">Register</h1>
+            <div className="flex-col ">
+                <input 
+                  type="email"
+                  placeholder="Email*" 
+                  name="email" 
+                  value={formData.email}
+                  onChange={changeHandler}
+                  className="w-full my-4 border-[1px] border-lightgray rounded-lg p-2 text-lg max-w-full"
+                />
+                <input 
+                  type={showPassword ? ("text") : ("password")}
+                  value={formData.password}
+                  name='password'
+                  onChange={changeHandler} 
+                  placeholder="Password*"  
+                  className="w-full mb-4 border-[1px] relative border-lightgray rounded-lg p-2 text-lg max-w-full"
+                />
+                <span 
+                  className='absolute mt-2 right-[47%] cursor-pointer'
+                  onClick={()=>{setShowPassword((prev) => !prev)}}>
+                      {
+                          showPassword ? 
+                          (<AiOutlineEye fontSize={24} fill="#AFB2BF"/>) : 
+                          (<AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF"/>)
+                      }
+                </span>
+                <input 
+                  type={showConfirmPassword ? ("text") : ("password")}
+                  value={formData.confirmPassword}
+                  name='confirmPassword'
+                  onChange={changeHandler} 
+                  placeholder="Confirm Password*"  
+                  className="w-full mb-4 border-[1px] border-lightgray relative z-0 rounded-lg p-2 text-lg max-w-full"
+                />
+                <span 
+                  className='absolute mt-2 right-[47%] cursor-pointer'
+                  onClick={()=>{setShowConfirmPassword((prev) => !prev)}}>
+                      {
+                          showConfirmPassword ? 
+                          (<AiOutlineEye fontSize={24} fill="#AFB2BF"/>) : 
+                          (<AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF"/>)
+                      }
+                </span>
+
+              <input type="tel" value={formData.phone} onChange={changeHandler} name="phone" placeholder="Phone No.*" className="w-full mb-4 border-[1px] border-lightgray rounded-lg p-2 text-lg max-w-full"/>
+
             </div>
-            <form onSubmit={submitHandler}>
-                <div className=" border-[1px] order-1 my-[12%] border-lightgray rounded-2xl shadow-lg p-9 ">
-                    <h1 className="text-3xl font-semibold">Register</h1>
-                    <div className="flex-col ">
-                        <input 
-                          type="email"
-                          placeholder="Email*" 
-                          name="email" 
-                          value={formData.email}
-                          onChange={changeHandler}
-                          className="w-full my-4 border-[1px] border-lightgray rounded-lg p-2 text-lg max-w-full"
-                        />
-                        <input 
-                          type={showPassword ? ("text") : ("password")}
-                          value={formData.password}
-                          name='password'
-                          onChange={changeHandler} 
-                          placeholder="Password*"  
-                          className="w-full mb-4 border-[1px] relative border-lightgray rounded-lg p-2 text-lg max-w-full"
-                        />
-                        <span 
-                          className='absolute mt-2 right-[47%] cursor-pointer'
-                          onClick={()=>{setShowPassword((prev) => !prev)}}>
-                              {
-                                  showPassword ? 
-                                  (<AiOutlineEye fontSize={24} fill="#AFB2BF"/>) : 
-                                  (<AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF"/>)
-                              }
-                        </span>
-                        <input 
-                          type={showConfirmPassword ? ("text") : ("password")}
-                          value={formData.confirmPassword}
-                          name='confirmPassword'
-                          onChange={changeHandler} 
-                          placeholder="Confirm Password*"  
-                          className="w-full mb-4 border-[1px] border-lightgray relative z-0 rounded-lg p-2 text-lg max-w-full"
-                        />
-                        <span 
-                          className='absolute mt-2 right-[47%] cursor-pointer'
-                          onClick={()=>{setShowConfirmPassword((prev) => !prev)}}>
-                              {
-                                  showConfirmPassword ? 
-                                  (<AiOutlineEye fontSize={24} fill="#AFB2BF"/>) : 
-                                  (<AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF"/>)
-                              }
-                        </span>
-
-                        <input type="tel" value={formData.phone} onChange={changeHandler} name="phone" placeholder="Phone No.*" className="w-full mb-4 border-[1px] border-lightgray rounded-lg p-2 text-lg max-w-full"/>
-
-                    </div>
-                    <button type="submit" className="rounded-full py-2 text-xl my-4 text-white bg-orange border-none w-full">Register</button>
-                    <p>Have an account? <button><Link to="/login" className="text-orange hover:underline"> Log In</Link> </button> </p>
-                    </div>
-
-            </form>
+            <button type="submit" className="rounded-full py-2 text-xl my-4 text-white bg-orange border-none w-full">Register</button>
+            <p>Have an account? <button><Link to="/login" className="text-orange hover:underline"> Log In</Link> </button> </p>
+          </div>
+        </form>
         </section>
     </div>
   )

@@ -1,11 +1,10 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-// import { useDispatch } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 
 function PrivateLink({ children}) {
 const {loggedInUser} = useSelector((state) => state)
-// console.log(isLoggedIn,"privvvvvvvvvvv")
+// console.log(isLoggedIn,"priv")
 // const {loggedInUser:isLoggedIn} = useSelector((state) => state)
 
 return (

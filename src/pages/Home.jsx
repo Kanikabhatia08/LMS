@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import hero from '../images/Hero.png'
 import {categories, featured} from '../data'
 import Categories from '../components/Categories'
@@ -46,7 +46,6 @@ function Home() {
             <h2 className="lg:text-3xl">Top Categories</h2>
             <p className="text-gray py-2">Explore our Popular Categories</p>
           </div>
-
           <div>
             <button className="rounded-full border-[#9D9D9D] border-2 px-4 py-3 hover:text-white hover:bg-orange hover:border-none">All Categories</button>
           </div>
@@ -114,16 +113,16 @@ function Home() {
       {/* Grow SKill */}
       <div className="flex scale-110 gap-20 mx-auto justify-center my-32">
         <div className="max-w-[85%]">
-            <img src={grow} className='max-w-[110%]'/>
+            <img src={grow} alt='grow' className='max-w-[110%]'/>
         </div>
         <div className="max-w-[40%]">
             <h1 className=" font-semibold lg:text-2xl 2xl:text-4xl">Grow Us Your Skill With LearnPress LMS</h1>
             <p className="py-3 text-gray 2xl:text-xl font-jost">We denounce with righteous indignation and dislike men who are so beguiled and demoralized that cannot trouble.</p>
             <ul className="font-jost 2xl:text-lg">
-                <li className="flex gap-2 m-3"><img src={tick}/>Certification</li>
-                <li className="flex gap-2 m-3"><img src={tick}/>Certification</li>
-                <li className="flex gap-2 m-3"><img src={tick}/>Certification</li>
-                <li className="flex gap-2 m-3"><img src={tick}/>Certification</li>
+                <li className="flex gap-2 m-3"><img src={tick} alt='tick'/>Certification</li>
+                <li className="flex gap-2 m-3"><img src={tick} alt='tick'/>Certification</li>
+                <li className="flex gap-2 m-3"><img src={tick} alt='tick'/>Certification</li>
+                <li className="flex gap-2 m-3"><img src={tick} alt='tick'/>Certification</li>
             </ul>
             <button className="rounded-full mt-4 text-xl px-4 py-3 text-white bg-orange border-none">Explore Courses</button>
         </div>
@@ -132,7 +131,7 @@ function Home() {
       {/* Add on 2 */}
       <div className="flex mx-auto justify-center m-20">
         <div className="relative">
-            <img src={AddOn2}/>
+            <img src={AddOn2}  alt='AddOn2'/>
         </div>
         <div className="absolute max-w-[45%] text-center lg:mt-8 2xl:mt-14">
             <h3 className=" text-lg font-semibold">PROVIDING AMAZING</h3>
@@ -150,30 +149,30 @@ function Home() {
                     <h3 className="text-gray font-jost text-xl">What Students Say About Academy LMS</h3>
                 </div>
                 <div>
-                    <div className="row gap-4 mt-10 max-w-[95%] justify-center mx-auto text-left">
+                    <div className="row gap-4 mt-10 justify-center mx-auto text-left">
                         <div className="col border-lightgray border-2 rounded-2xl p-8">
-                            <img src={quotes}/>
+                            <img src={quotes} alt='quotes'/>
                             <p className="text-lg py-3">I must explain to you how all this mistaken . Tdea of denouncing pleasure and praising pain was born and I will give you a complete account of the system and expound</p>
                             <h2 className="text-xl font-semibold">Taylor Swift</h2>
                             <p className="text-gray">Designer</p>
                         </div>
 
                         <div className="col border-lightgray border-2 rounded-2xl p-8">
-                            <img src={quotes}/>
+                            <img src={quotes} alt='quotes'/>
                             <p className="text-lg py-3">I must explain to you how all this mistaken . Tdea of denouncing pleasure and praising pain was born and I will give you a complete account of the system and expound</p>
                             <h2 className="text-xl font-semibold">Selena Gomez</h2>
                             <p className="text-gray">Developer</p>
                         </div>
 
                         <div className="col border-lightgray border-2 rounded-2xl p-8">
-                            <img src={quotes}/>
+                            <img src={quotes} alt='quotes'/>
                             <p className="text-lg py-3">I must explain to you how all this mistaken . Tdea of denouncing pleasure and praising pain was born and I will give you a complete account of the system and expound</p>
                             <h2 className="text-xl font-semibold">Harry Styles</h2>
                             <p className="text-gray">Designer</p>
                         </div>
 
                         <div className="col border-lightgray border-2 rounded-2xl p-8">
-                            <img src={quotes}/>
+                            <img src={quotes} alt='quotes'/>
                             <p className="text-lg py-3">I must explain to you how all this mistaken . Tdea of denouncing pleasure and praising pain was born and I will give you a complete account of the system and expound</p>
                             <h2 className="text-xl font-semibold">Justin Bieber</h2>
                             <p className="text-gray">Java Instructor</p>   
@@ -186,11 +185,11 @@ function Home() {
       {/* Add On 3 */}
       <div className="flex rounded-3xl mx-auto justify-center bg-gradient-to-r mt-20 from-[#C7E6F9] to-[#E8D1FE]">
         <div className="relative ">
-            <img src={AddOn3}/>
+            <img src={AddOn3} alt='AddOn3'/>
         </div>
         <div className="absolute flex lg:mt-12 xl:mt-20 xl:gap-40">
             <div className="flex">
-                <img src={student} className="lg:w-[19%]"/>
+                <img src={student} alt='student' className="lg:w-[19%]"/>
                 <h1 className="lg:text-lg 2xl:text-2xl lg:mt-7 mx-3">Let's Start With Academy LMS</h1>
             </div>
             <div className="lg:mt-5 ">

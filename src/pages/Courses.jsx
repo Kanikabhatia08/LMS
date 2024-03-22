@@ -6,7 +6,6 @@ import { products } from '../data'
 function Courses() {
 
   return (
-
     <div className="max-w-[73%] mx-auto justify-center">
       <header className='flex justify-between items-center '>
           <div className="text-3xl font-semibold p-4">COURSE LIST</div>

@@ -46,29 +46,20 @@ function Login() {
         toast.error("Password should be more than 6 characters")
       }
       else{
-        // 2 baar logged in kyu aa rha hai????????
-        // setIsLoggedIn(true);
         if(state?.users){
           var match = false;
-          // console.log(match,"111111111111111111")
           console.log(state?.users,"state?.usersstate?.users");
           state?.users?.data?.map((user)=>{
             if(formData.email === user.email && formData.password === user.password){
                 localStorage.setItem("setIsLoggedIn", JSON.stringify(true));
                 dispatch(authenticate(true))
                 toast.success("You are logged in")
-          // console.log(match,"22222222222")
-
                 match = true;
             } 
-            
-          
         })
         if(match === false){
           toast.error("Valid email & password required")
-      }
-        console.log(match,"333333333333333")
-
+        }
         {(match ? 
           (navigate("/Courses"))
           :
@@ -78,9 +69,7 @@ function Login() {
     }
     else{
       toast.error("Please signup to create an account")
-    } 
-
-    
+    }
 }
 
   function changeHandler(event){
@@ -91,8 +80,6 @@ function Login() {
         }
     ))
   }
-
-
 
     return (
     <div>

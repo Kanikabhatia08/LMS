@@ -6,7 +6,6 @@ import { useSelector } from 'react-redux'
 function Cart() {
 
     const {cart} = useSelector((state) => state);
-    // console.log(cart,"printingg cartt")
     const [totalAmount, setTotalAmount] = useState(0);
     var sum = 0;
 

@@ -3,7 +3,7 @@ import phone from "../images/phone.png"
 import email from "../images/email.png"
 
 function ContactUs() {
-  return (
+    return (
     <div className='max-w-[80%] my-10 mx-auto flex flex-col'>
         <div className='flex justify-between'>
             <div className='w-[35%]'>
@@ -47,16 +47,12 @@ function ContactUs() {
                         type="email" 
                         placeholder='Email*'
                         className='border border-gray w-full rounded-md p-2'
-
                     />
                 </div>
                 
-
                 <textarea
-
                     placeholder='Comment'
                     className='border border-gray w-full rounded-md p-2 pb-5'
-
                 />
 
                 <div className='gap-2 flex text-gray'>
@@ -64,8 +60,6 @@ function ContactUs() {
                         type='checkbox' 
                     />
                     <label>Save my name, email in this brower for the next time I comment</label>
-
-
                 </div>
                 
                 <button className='rounded-full w-[15%] lg:text-base 2xl:text-lg px-3 py-[9px] text-white bg-orange border-none"'>Post Comment</button>
@@ -73,7 +67,7 @@ function ContactUs() {
         </div>
         
     </div>
-  )
+    )
 }
 
 export default ContactUs

@@ -10,25 +10,14 @@ function CartItem({item}) {
     const dispatch = useDispatch();
     const [total, setTotal] = useState();
 
-
     const incrementHandler = ()=>{
         dispatch(increment(item.id))
-        // setCount(count+1);
     }
 
     useEffect( () => {
         setTotal( item.count*item.price );
         console.log([total])
     }, [cart])
-
-    // useEffect( () => {
-    //     setTotalAmount( total.reduce( (acc, curr) => acc + curr.total,0) );
-    //     console.log(total)
-    // }, [cart])
-
-    // const amount = (totalAmount) =>{
-    //     console.log(totalAmount)
-    // }
 
     const decrementHandler = () =>{
         dispatch(decrement(item.id))
@@ -40,11 +29,11 @@ function CartItem({item}) {
 
     return (
         <div>
-
-        <div className='flex gap-4 py-3'>
+            <div className='flex gap-4 py-3'>
                 <div className='w-[30%]'>
                     <img src={item.image} />
                 </div>
+
                 <div className='w-full'>
                     <h1 className='text-2xl text-black'>{item.name}</h1>
                     <div className='flex justify-between items-center text-xl'>
@@ -63,15 +52,14 @@ function CartItem({item}) {
                                 onClick={incrementHandler}> + </button>
                         </div>
                     </div>
+
                     <div
                         onClick={remove}>
                         <FaTrash />
-                        </div>
-                    
+                    </div>
                 </div>
-                
-        </div>
-        <hr className='p-2 w-full'/>
+            </div>
+            <hr className='p-2 w-full'/>
         </div>
     )
 }
