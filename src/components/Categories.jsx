@@ -18,7 +18,7 @@ function Categories({ categories }) {
         {categories.map((category, index) => (
             
         <div key={category.id} className="col hover:transition-transform transform move-up text-center
-            border-lightgray xl:py-16 xl:px-6 border-[1px] py-20 p-10 rounded-2xl hover:text-orange hover:shadow-xl ">
+            border-lightgray xl:py-16 xl:px-6 border-[2px] py-20 p-10 rounded-2xl hover:text-orange hover:shadow-xl ">
                 <img className="mx-auto py-2"  src={img[index]} alt="icon" />
                 <h3 className="font-medium xl:text-lg">{category.title}</h3>
                 <p className="font-light text-gray">{category.count} Courses</p>

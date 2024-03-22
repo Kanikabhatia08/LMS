@@ -31,7 +31,6 @@ function FAQs() {
         },
     ];
 
-    
     const [activeIndex, setActiveIndex] = useState(null)
     
     const handleMouseEnter = (index) => {
