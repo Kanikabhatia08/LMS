@@ -3,15 +3,21 @@ import signupImg from '../images/signup.jpg'
 import { Link, useNavigate} from 'react-router-dom';
 import { AiOutlineEye,AiOutlineEyeInvisible } from "react-icons/ai";
 import toast from 'react-hot-toast';
+import 'react-phone-number-input/style.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { registerUser } from '../redux/slices/authSlice';
 import { getUsers } from '../redux/slices/authSlice';
 import { authenticate } from '../redux/slices/LoginSlice';
+import PhoneInput from 'react-phone-number-input';
+import { signInWithPhoneNumber } from 'firebase/auth';
+import { auth } from '../Firebase/config';
+
 
 
 function Signup() {
 
-  // const [storedUsers, setStoredUsers] = useState([])
+  const [user, setUser] = useState(null);
+  const [otp, setOtp] = useState("");
   const state = useSelector((state) => state)
   const [formData, setFormData] = useState({
     email: "",
@@ -103,6 +109,7 @@ function submitHandler(event){
       navigate("/Courses")
       toast.success("Account Created")
     }
+
       // let stored_users = JSON.parse(localStorage.getItem('users'));
       // console.log(stored_users, "hi", localStorage.getItem('users'))
       // if(stored_users) {
@@ -140,6 +147,22 @@ function submitHandler(event){
       //   })
         
       // }
+}
+
+const getOtp = async(e) =>{
+  e.preventDefault();
+  try{
+      // const recaptcha = new RecaptchaVerifier(auth, "recaptcha", {'callback': (response) => {
+      //     console.log(response)
+      // },})
+      const confirmation = await signInWithPhoneNumber(auth, formData.phone)
+      console.log(confirmation,"Confirm");   
+      setUser(confirmation);
+      
+  }
+  catch(err){
+      console.log(err,"error");
+  }
 }
 
   return (
@@ -196,7 +219,15 @@ function submitHandler(event){
                       }
                 </span>
 
-              <input type="tel" value={formData.phone} onChange={changeHandler} name="phone" placeholder="Phone No.*" className="w-full mb-4 border-[1px] border-lightgray rounded-lg p-2 text-lg max-w-full"/>
+              <PhoneInput 
+                defaultCountry='IN'
+                name="phone"
+                value={formData.phone}
+                onChange={changeHandler}
+                placeholder="Phone No.*"
+                className="w-full mb-4 border-[1px] border-lightgray rounded-lg p-2 text-lg max-w-full"
+              />
+              <button onClick={getOtp}>Get OTP</button>
 
             </div>
             <button type="submit" className="rounded-full py-2 text-xl my-4 text-white bg-orange border-none w-full">Register</button>

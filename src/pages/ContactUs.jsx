@@ -21,7 +21,7 @@ function ContactUs() {
                     <img src={email} alt="email"/>
                     <div className='gap-y-2 flex flex-col'>
                         <h3 className='text-base text-gray'>Email</h3>
-                        <p className='font-semibold'>Kani08@gmail.com</p>
+                        <p className='font-semibold'>Kanika08sep@gmail.com</p>
                     </div>
                 </div>
             </div>

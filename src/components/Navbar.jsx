@@ -53,7 +53,7 @@ function Navbar() {
                         <li className="hover:text-orange hover:no-underline cursor-pointer">
                             <Link to="/blogs">Blogs</Link></li>
 
-                            <button type="button" onClick={() => setIsOpen(!isOpen)} className="relative hover:text-orange flex hover:no-underline cursor-pointer">
+                            <button type="button" onMouseEnter={() => setIsOpen(!isOpen)} className="relative hover:text-orange flex hover:no-underline cursor-pointer">
                                 Page
                                 <IoMdArrowDropdown className='mt-2'/>
                             </button>

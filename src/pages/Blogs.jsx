@@ -19,14 +19,14 @@ function Blogs() {
                     })}</>)
                 } */}
 
-            <button onClick={(e) => dispatch(fetchBlogs())}>Click</button>
+            {/* <button onClick={(e) => dispatch(fetchBlogs())}>Click</button>
             <br/>
             {state?.blog?.isLoading && <><b>Loading...</b></>}
             {state?.blog?.data?.map((i) => { 
                 return (
                     <li>{i.title}</li>
                 )}
-            )}
+            )} */}
     </div>
     );
 }

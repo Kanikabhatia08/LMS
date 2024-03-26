@@ -2,7 +2,6 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchBlogs = createAsyncThunk("fetchBlogs", async () => {
     const res = await fetch(`https://jsonplaceholder.typicode.com/todos`);
-    // console.log(res.JSON(),"kkkkkkkkkkkk");
         const data = await res.json();
         return data
 
@@ -20,7 +19,6 @@ export const BlogSlice = createSlice({
             state.isLoading = true;
         })
         builder.addCase(fetchBlogs.fulfilled, (state, action) =>{
-            console.log(action.payload,"datakkkkkkkkkkkk");
             state.isLoading = false;
             state.data = action.payload;
         })

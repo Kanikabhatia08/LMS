@@ -6,28 +6,28 @@ import faq from '../images/Faq.png'
 function FAQs() {
     const faqs = [
         {
-            question: 'What Does Royalty Free Mean?',
-            answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras facilisis faucibus odio arcu duis dui, adipiscing facilisis. Urna, donec turpis egestas volutpat. Quisque nec non amet quis. Varius tellus justo odio parturient mauris curabitur lorem in.'
+            question: 'What does LMS mean for an organization?',
+            answer: 'An LMS means you have an online tool to efficiently manage employee training, development, and engagement—your modern learning solution. An LMS is a website where your organization can put its training materials, frequently used documents, and communicate directly with your people.'
         },
         {
-            question: 'What Does Royalty Free Mean?',
-            answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras facilisis faucibus odio arcu duis dui, adipiscing facilisis. Urna, donec turpis egestas volutpat. Quisque nec non amet quis. Varius tellus justo odio parturient mauris curabitur lorem in.'
+            question: 'What are the benefits of an LMS?',
+            answer: 'The primary benefits of using an LMS are in training and communication in one easily accessible platform. Content creation tools within the LMS power up course authoring for you to build learning paths, for things like onboarding and career development.  '
         },
         {
-            question: 'What Does Royalty Free Mean?',
-            answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras facilisis faucibus odio arcu duis dui, adipiscing facilisis. Urna, donec turpis egestas volutpat. Quisque nec non amet quis. Varius tellus justo odio parturient mauris curabitur lorem in.'
+            question: 'Why should I use an LMS?',
+            answer: 'You should use an LMS simply because it improves your people operations. The best LMS platforms fit the workflow of you and your people, making it easy to train, onboard new employees, and communicate consistently across the country in different locations.'
         },
         {
-            question: 'What Does Royalty Free Mean?',
-            answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras facilisis faucibus odio arcu duis dui, adipiscing facilisis. Urna, donec turpis egestas volutpat. Quisque nec non amet quis. Varius tellus justo odio parturient mauris curabitur lorem in.'
+            question: 'What are assessments and testing?',
+            answer: 'Assessments and testing are key because they help track learners’ progress and development. You should check with the vendor to see what types of assessments their LMS offers. Multiple choice quizzes are great, but sometimes there is a need    to show someone in person that they’ve mastered a new skill.'
         },
         {
-            question: 'What Does Royalty Free Mean?',
-            answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras facilisis faucibus odio arcu duis dui, adipiscing facilisis. Urna, donec turpis egestas volutpat. Quisque nec non amet quis. Varius tellus justo odio parturient mauris curabitur lorem in.'
+            question: 'What is instructor-led training?',
+            answer: 'Instructor-led training is the classic, traditional way of training and learning. You’ve got a teacher and a bunch of students, and the instructor teaches those students through formal means in real time.'
         },
         {
-            question: 'What Does Royalty Free Mean?',
-            answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras facilisis faucibus odio arcu duis dui, adipiscing facilisis. Urna, donec turpis egestas volutpat. Quisque nec non amet quis. Varius tellus justo odio parturient mauris curabitur lorem in.'
+            question: 'Why do I need social learning?',
+            answer: 'The ability to share content with your colleagues brings people together and gives learners a feel for the big-picture direction of an organization. Conversational threads boost efficiency since learners find exactly what they need to know and refer back to the answer as needed.'
         },
     ];
 
@@ -48,7 +48,7 @@ function FAQs() {
                 {faqs.map((faq, index) => (
                     <div
                         key={index}
-                        className="relative hover:text-orange"
+                        className="relative hover:text-orange hover:mb-32 "
                         onMouseEnter={() => handleMouseEnter(index)}
                         onMouseLeave={handleMouseLeave}
                     >
@@ -57,8 +57,8 @@ function FAQs() {
                             <p><FaAngleDown className='absolute right-[2%] mt-3 text-gray'/></p>
                         </div>
                     {activeIndex === index && (
-                        <div className="absolute transition-shadow -mt-1 rounded-b-md duration-300 top-full left-0 bg-footer z-1 text-gray p-4">
-                        <p>{faq.answer}</p>
+                        <div className="absolute duration-300 top-full left-0 bg-footer text-gray px-3 py-2">
+                            <p>{faq.answer}</p>
                         </div>
                     )}
                     </div>

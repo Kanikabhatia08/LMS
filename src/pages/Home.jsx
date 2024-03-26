@@ -1,8 +1,8 @@
 import React from 'react'
 import hero from '../images/Hero.png'
 import {categories, featured} from '../data'
-import Categories from '../components/Categories'
-import Featured from '../components/Featured'
+import Categories from '../components/Home/Categories'
+import Featured from '../components/Home/Featured'
 import AddOn1 from '../images/Maskgroup.png'
 import AddOn2 from '../images/Maskgroup2.png'
 import AddOn3 from '../images/Maskgroup3.png'
@@ -37,7 +37,7 @@ function Home() {
         </div>
       </section>
 
-    <div className='max-w-[73%] justify-center mx-auto my-10'>
+    <div className='max-w-[73%] flex-col flex gap-14 justify-center mx-auto my-14 '>
 
     {/* Top Categories */}
       <section className='my-10'>
@@ -71,7 +71,7 @@ function Home() {
 
       {/* add On 1 */}
 
-      <div className="flex mx-auto justify-center my-10">
+      <div className="flex mx-auto justify-center ">
         <div className="relative">
             <img src={AddOn1} alt='addOn1'/>
         </div>
@@ -85,7 +85,7 @@ function Home() {
       </div>
 
       {/* Status Grid */}
-      <div className="justify-center mx-auto my-20">
+      <div className="justify-center ">
         <div className=" row gap-3">
             <div className="col bg-[#F5F5F5] rounded-2xl text-center py-14 p-9">
                 <h1  className="text-4xl font-bold text-orange"><CountUp start={0} end={38} duration={10} suffix="K+"/></h1>
@@ -111,9 +111,9 @@ function Home() {
       </div>
 
       {/* Grow SKill */}
-      <div className="flex scale-110 gap-20 mx-auto justify-center my-32">
-        <div className="max-w-[85%]">
-            <img src={grow} alt='grow' className='max-w-[110%]'/>
+      <div className="flex gap-20 mx-auto justify-between ">
+        <div>
+            <img src={grow} alt='grow'/>
         </div>
         <div className="max-w-[40%]">
             <h1 className=" font-semibold lg:text-2xl 2xl:text-4xl">Grow Us Your Skill With LearnPress LMS</h1>
@@ -129,7 +129,7 @@ function Home() {
       </div>
 
       {/* Add on 2 */}
-      <div className="flex mx-auto justify-center m-20">
+      <div className="flex mx-auto my-20 justify-center ">
         <div className="relative">
             <img src={AddOn2}  alt='AddOn2'/>
         </div>
@@ -183,18 +183,20 @@ function Home() {
             </div>
 
       {/* Add On 3 */}
-      <div className="flex rounded-3xl mx-auto justify-center bg-gradient-to-r mt-20 from-[#C7E6F9] to-[#E8D1FE]">
+      <div className="flex rounded-3xl mx-auto justify-center bg-gradient-to-r  from-[#C7E6F9] to-[#E8D1FE]">
         <div className="relative ">
             <img src={AddOn3} alt='AddOn3'/>
         </div>
-        <div className="absolute flex lg:mt-16 items-center xl:justify-between gap-12 ">
+        <div className="absolute flex lg:mt-16 gap-40 lg:justify-between  ">
             <div className="flex">
                 <img src={student} alt='student' className="lg:w-[19%]"/>
                 <h1 className="lg:text-lg 2xl:text-2xl lg:mt-7 mx-3">Let's Start With Academy LMS</h1>
             </div>
             <div className="lg:mt-4 gap-3 flex">
-                <button className="rounded-full lg:text-sm 2xl:text-xl border-orange text-orange border-2 px-4 py-3 ">I'm A Student</button>
-                <button className="rounded-full lg:text-sm 2xl:text-xl px-4 py-3 text-white bg-orange border-none">Become An Instructor</button>
+                <button className="rounded-full lg:text-sm 2xl:text-xl border-orange text-orange border-2 px-4 py-3 
+                                  transform transition duration-500 hover:scale-110 hover:font-semibold">I'm A Student</button>
+                <button className="rounded-full lg:text-sm 2xl:text-xl px-4 py-3 text-white bg-orange border-none
+                                  transform transition duration-500 hover:scale-110 hover:font-semibold">Become An Instructor</button>
             </div>
         </div>
       </div>
@@ -206,4 +208,4 @@ function Home() {
   )
 }
 
-export default Home
+export default Home;

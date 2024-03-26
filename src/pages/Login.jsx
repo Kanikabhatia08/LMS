@@ -6,6 +6,10 @@ import { AiOutlineEye,AiOutlineEyeInvisible } from "react-icons/ai";
 import { useDispatch, useSelector } from 'react-redux';
 import { getUsers } from '../redux/slices/authSlice';
 import { authenticate } from '../redux/slices/LoginSlice';
+import { signInWithPopup } from 'firebase/auth';
+import { auth, provider } from '../Firebase/config';
+import { FcGoogle } from "react-icons/fc";
+
 
 
 function Login() {
@@ -81,14 +85,21 @@ function Login() {
     ))
   }
 
+  const handleSignIn = () =>{
+    signInWithPopup(auth,provider).then((data) =>{
+      setFormData(data.user.email)
+      dispatch(authenticate(true))
+    })
+  }
+
     return (
     <div>
       <section className='flex justify-center mx-auto max-w-[80%]'>
-        <div className="sm:hidden lg:block lg:max-w-[50%] xl:max-w-[45%] sm:my-[20%] lg:my-0">
+        <div className="sm:hidden lg:block lg:max-w-[50%] xl:max-w-[50%] sm:my-[20%] lg:my-0">
           <img src={loginImg} alt='login' loading='lazy'/>
         </div>
         <form onSubmit={submitHandler}>
-          <div className='border-[1px] my-[20%] border-lightgray rounded-2xl p-9 shadow-lg'>
+          <div className='border-[1px] border-lightgray rounded-2xl mt-10 p-9 shadow-lg'>
             <h1 className="text-3xl font-semibold">Login</h1>
             <div>
               <input 
@@ -110,7 +121,7 @@ function Login() {
               />
 
               <span 
-                className='absolute mt-[9px] cursor-pointer z-10 right-[17%]'
+                className='absolute mt-[9px] cursor-pointer z-10 right-[13%]'
                 onClick={()=>{setShowPassword((prev) => !prev)}}>
                     {
                         showPassword ? 
@@ -123,6 +134,7 @@ function Login() {
             </div>
             
             <button value="Login" className="button rounded-full py-2 text-center text-xl my-4 text-white bg-orange border-none w-full">Login</button>
+            <button className='rounded-full mx-auto text-gray justify-center mb-4 text-center py-1 gap-2 font-semibold text-xl border-gray border-1 w-full flex' onClick={handleSignIn}><FcGoogle className='m-1 text-2xl'/>Sign in with Google</button>
             <p>Don't have an account? <button><Link to="/signup" className='text-orange hover:underline'> Sign Up</Link></button></p>
           </div>
         </form>
