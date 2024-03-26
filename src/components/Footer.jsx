@@ -5,13 +5,16 @@ import { Link } from 'react-router-dom'
 function Footer() {
     return (
         <div>
-        <section className="bg-footer">
-            <div className="row max-w-[73%] mx-auto py-20">
+        <section className="bg-footer flex flex-col gap-10">
+            <div className="flex flex-row max-w-[73%] mx-auto pt-20">
             
                 <div className="col-lg-4">
                     <img src={Flogo} className="w-[50%]"/>
                     <p className="py-10 text-gray font-jost lg:text-base 2xl:text-lg">
-                    Empowering learners worldwide, EduPress is your gateway to a world of knowledge. With cutting-edge technology and comprehensive resources, we pave the path to educational excellence. Join us in redefining learning experiences, one click at a time. Unlock your potential with EduPress today.
+                        Empowering learners worldwide, EduPress is your gateway to a world of knowledge. 
+                        With cutting-edge technology and comprehensive resources, we pave the path to educational 
+                        excellence. Join us in redefining learning experiences, one click at a time. Unlock your 
+                        potential with EduPress today.
                     </p>
                 </div>
 
@@ -29,7 +32,6 @@ function Footer() {
                         </li>
                         
                     </ul>
-
                 </div>
 
                 <div className="col">
@@ -52,7 +54,6 @@ function Footer() {
                         </li>
                         
                     </ul>
-
                 </div>
 
                 <div className="col-lg-3">
@@ -82,13 +83,10 @@ function Footer() {
             {/*  copyright  */}
             <div className="mx-auto justify-center pb-3 text-center text-xl text-gray">
                 <p>Copyright © 2024 LearnPress LMS | Powered by LearnPress LMS</p>
-
             </div>
-
         </section>
-
         </div>
     )
 }
 
-export default Footer
+export default Footer;
