@@ -67,7 +67,8 @@ function Login() {
                     value={email} 
                     onChange={(e) => { setEmail(e.target.value) }} 
                     placeholder="Enter Email Id*"  
-                    className="w-full my-4 border-[1px] border-lightgray rounded-lg p-2 text-lg max-w-full"
+                    className="w-full my-4 border-[1px] border-lightgray rounded-lg p-2 text-lg max-w-full 
+                        focus:border-none focus:ring-orange focus:ring-2 invalid:border-red-500 invalid:border-2  focus:invalid:ring-red-500"
                 />
 
                 <input  
@@ -76,7 +77,8 @@ function Login() {
                     value={password} 
                     onChange={(e) => { setPassword(e.target.value) }} 
                     placeholder="Enter Password* "  
-                    className="w-full mb-4 border-[1px] border-lightgray rounded-lg p-2 relative z-0 text-lg max-w-full"
+                    className="w-full mb-4 border-[1px] border-lightgray rounded-lg p-2 relative text-lg max-w-full 
+                    focus:border-none focus:ring-orange focus:ring-2 invalid:border-red-500 invalid:border-2  focus:invalid:ring-red-500"
                 />
 
                 <span 

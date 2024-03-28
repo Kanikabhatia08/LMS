@@ -53,7 +53,7 @@ function FAQs() {
                         onMouseLeave={handleMouseLeave}
                     >
                         <div className='flex relative'>
-                            <h2 className="cursor-pointer bg-footer w-full rounded-md p-3 ">{faq.question}</h2>
+                            <h2 className="cursor-pointer bg-footer w-full font-semibold rounded-md p-3 ">{faq.question}</h2>
                             <p><FaAngleDown className='absolute right-[2%] mt-3 text-gray'/></p>
                         </div>
                     {activeIndex === index && (

@@ -15,7 +15,7 @@ function Featured({featured}) {
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-10 ">
         {featured.map((card,index)=>(
           <div key={card.id} className="flex flex-col group border-2 border-lightgray 2xl:my-4 rounded-2xl 2xl:rounded-3xl 
-          hover:shadow-xl transform transition duration-300 hover:-mt-2 hover:h3-text-orange">
+          hover:shadow-xl transform transition duration-200 ease-in-out hover:-translate-y-3 hover:h3-text-orange">
             <div>
               <img src={img[index]} alt='featured' className=""/>
             </div>

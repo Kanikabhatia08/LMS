@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import hero from '../images/Hero.png'
 import {categories, featured} from '../data'
 import Categories from '../components/Home/Categories'
@@ -11,9 +11,13 @@ import tick from '../images/Tick.png'
 import student from '../images/student.png'
 import CountUp from 'react-countup'
 import quotes from "../images/Quotes.png"
+import ScrollTrigger from 'react-scroll-trigger'
+
 
 
 function Home() {
+
+  const [counter, setCounter] = useState(false);
   
   return (
     <div>
@@ -25,13 +29,13 @@ function Home() {
 
         <div className="absolute md:max-w-[30%] xl:max-w-[35%] left-[12%] md:top-[28%] xl:top-[32%] text-left" >
             
-            <h1 className="font-medium md:text-3xl xl:text-6xl">
+            <h1 className="font-medium md:text-3xl xl:text-6xl animate-fadeLeft">
               Build Skills With Online Course</h1>
             
             <p className="text-gray md:py-6 xl:py-9 lg:text-base xl:text-xl">
               We denounce with righteous indignation and dislike men who are so beguiled and demoralized that cannot trouble.</p>
               
-            <button className="text-white bg-orange rounded-full md:text-base xl:text-xl py-3 px-4">
+            <button className="text-white bg-orange rounded-full md:text-base xl:text-xl py-3 px-4 animate-slideUp">
               Posts Comment</button>
               
         </div>
@@ -85,28 +89,31 @@ function Home() {
       </div>
 
       {/* Status Grid */}
-      <div className="justify-center ">
+      <div className="justify-center counter">
+        <ScrollTrigger onEnter={()=>{setCounter(true)}} onExit={() =>{setCounter(false)}}>
         <div className=" row gap-3">
             <div className="col bg-[#F5F5F5] rounded-2xl text-center py-14 p-9">
-                <h1  className="text-4xl font-bold text-orange"><CountUp start={0} end={38} duration={10} suffix="K+"/></h1>
+                <h1  className="text-4xl font-bold text-orange">{counter && <CountUp  start={0} end={38} duration={10} suffix="K+"/> }</h1>
                 <p className="py-3 text-xl font-semibold">Active Students</p>
             </div>
 
             <div  className="col bg-[#F5F5F5] rounded-2xl text-center py-14 p-9">
-                <h1 className="text-4xl font-bold text-orange"><CountUp start={0} end={448} duration={2} /></h1>
+                <h1 className="text-4xl font-bold text-orange">{counter && <CountUp start={0} end={448} duration={2} />}</h1>
                 <p className="py-3 text-xl font-semibold">Total Courses</p>
             </div>
 
             <div className="col bg-[#F5F5F5] rounded-2xl text-center py-14 p-9">
-                <h1 className="text-4xl font-bold text-orange"><CountUp start={0} end={169} duration={4}/></h1>
+                <h1 className="text-4xl font-bold text-orange">{counter && <CountUp start={0} end={169} duration={4}/>}</h1>
                 <p className="py-3 text-xl font-semibold">Instructors</p>
             </div>
 
             <div className="col bg-[#F5F5F5] rounded-2xl text-center py-14 p-9">
-                <h1 className="text-4xl font-bold text-orange"><CountUp start={0} end={100} duration={8} suffix="%"/></h1>
+                <h1 className="text-4xl font-bold text-orange">{counter && <CountUp start={0} end={100} duration={8} suffix="%"/>}</h1>
                 <p className="py-3 text-xl font-semibold">Satisfaction Rate</p>
             </div>
         </div>
+        </ScrollTrigger>
+        
 
       </div>
 
