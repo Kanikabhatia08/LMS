@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, Navigate, useLocation } from 'react-router-dom'
 import logo from "../images/LOGO.jpg"
 import toast from 'react-hot-toast';
 import search from '../images/Search.png'
@@ -8,6 +8,8 @@ import { GiShoppingCart } from "react-icons/gi";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { useDispatch, useSelector } from 'react-redux';
 import { authenticate } from '../redux/slices/LoginSlice';
+import { useAuth } from '../contexts/authContext';
+import { doSignOut } from '../Firebase/auth';
 
 
 
@@ -16,6 +18,7 @@ function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     let location = useLocation();
     const {loggedInUser:isLoggedIn} = useSelector((state) => state)
+    const { userLoggedIn } = useAuth()
 
     let loc = window.location.pathname.split("/").splice(-1)[0]
     // console.log(loc);
@@ -76,7 +79,7 @@ function Navbar() {
                 {/* Buttons */}
                 <div className="sm:hidden xl:flex gap-2">
                     {
-                        !isLoggedIn &&
+                        !userLoggedIn &&
                         <Link to="/login">
                             <button className="py-[13px] hover:text-orange hover:no-underline cursor-pointer">
                                 Login <span className='text-black'>/</span>
@@ -84,7 +87,7 @@ function Navbar() {
                         </Link>
                     }
                     {
-                        !isLoggedIn &&
+                        !userLoggedIn &&
                         <Link to="/signup">
                             <button className="py-[13px] hover:text-orange hover:no-underline cursor-pointer">
                                 Sign Up
@@ -92,23 +95,23 @@ function Navbar() {
                         </Link>
                     }
                     {
-                        isLoggedIn &&
+                        userLoggedIn &&
                         <Link>
                             <button className="py-[13px] hover:text-orange hover:no-underline cursor-pointer"
-                                onClick={() => {
-                                localStorage.setItem("setIsLoggedIn", JSON.stringify(false));
-                                dispatch(authenticate());
-                                toast.success("Logged Out")}}>
+                                onClick={() => { doSignOut().then(() => { 
+                                    Navigate('/login') ;
+                                    // console.log(doSignOut,"signout");
+                                }) }}>
                                 Log Out
                             </button>
                         </Link>
                     }
                     {
-                        !isLoggedIn &&
+                        !userLoggedIn &&
                         <img src={search} alt="Search Icon"/> 
                     }
                     {
-                        isLoggedIn &&
+                        userLoggedIn &&
                         <Link to="/cart" className="relative ">
                             <GiShoppingCart className='text-black text-4xl  mt-2'/>
                             <span className='absolute bg-red-600 w-6 h-6 flex justify-center items-center text-center mx-auto rounded-full text-white top-[50%] -right-3'>{count}</span>

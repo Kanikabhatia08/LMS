@@ -2,18 +2,17 @@ import Navbar from './components/Navbar';
 import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Courses from './pages/Courses';
-import Login from './pages/Login';
-import Signup from './pages/Signup';
-// import { useEffect, useState } from 'react';
+// import Login from './pages/Login';
+// import Signup from './pages/Signup';
 import Footer from './components/Footer';
 import PrivateLink from './components/PrivateLink';
 import Error from './pages/Error';
 import Cart from './pages/Cart';
-// import { useDispatch, useSelector } from 'react-redux';
 import FAQs from './pages/FAQs';
 import ContactUs from './pages/ContactUs';
 import Blogs from './pages/Blogs';
-// import { authenticate } from './redux/slices/LoginSlice';localocalStoragelStorage
+import FirebaseLogin from './pages/Auth/FirebaseLogin'
+import FirebaseRegister from './pages/Auth/FirebaseRegister'
 
 function App() {
 
@@ -54,8 +53,8 @@ function App() {
             <Cart />
           </PrivateLink>
         } />
-        <Route path="/login" element={<Login/>} />
-        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<FirebaseLogin/>} />
+        <Route path="/signup" element={<FirebaseRegister />} />
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/faqs" element={<FAQs />} />
         <Route path="/contactUs" element={<ContactUs />} />

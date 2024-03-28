@@ -6,10 +6,6 @@ import { AiOutlineEye,AiOutlineEyeInvisible } from "react-icons/ai";
 import { useDispatch, useSelector } from 'react-redux';
 import { getUsers } from '../redux/slices/authSlice';
 import { authenticate } from '../redux/slices/LoginSlice';
-import { signInWithPopup } from 'firebase/auth';
-import { auth, provider } from '../Firebase/config';
-import { FcGoogle } from "react-icons/fc";
-
 
 
 function Login() {
@@ -31,7 +27,7 @@ function Login() {
 
   function submitHandler(event){
     event.preventDefault();
-    
+
     // let storedUsers = JSON.parse(localStorage.getItem('formData'))
     // console.log(storedUsers,"userssssssssss")
     // if(storedUsers){
@@ -42,6 +38,7 @@ function Login() {
     //       toast.success("You are logged in");
     //     }
     //   })
+
     if(formData){
       if(formData.email.length === 0 || formData.password.length === 0){
         toast.error("Enter Email & Password");
@@ -85,12 +82,6 @@ function Login() {
     ))
   }
 
-  const handleSignIn = () =>{
-    signInWithPopup(auth,provider).then((data) =>{
-      setFormData(data.user.email)
-      dispatch(authenticate(true))
-    })
-  }
 
     return (
     <div>
@@ -134,7 +125,6 @@ function Login() {
             </div>
             
             <button value="Login" className="button rounded-full py-2 text-center text-xl my-4 text-white bg-orange border-none w-full">Login</button>
-            <button className='rounded-full mx-auto text-gray justify-center mb-4 text-center py-1 gap-2 font-semibold text-xl border-gray border-1 w-full flex' onClick={handleSignIn}><FcGoogle className='m-1 text-2xl'/>Sign in with Google</button>
             <p>Don't have an account? <button><Link to="/signup" className='text-orange hover:underline'> Sign Up</Link></button></p>
           </div>
         </form>

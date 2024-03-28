@@ -16,8 +16,6 @@ import { auth } from '../Firebase/config';
 
 function Signup() {
 
-  const [user, setUser] = useState(null);
-  const [otp, setOtp] = useState("");
   const state = useSelector((state) => state)
   const [formData, setFormData] = useState({
     email: "",
@@ -149,22 +147,6 @@ function submitHandler(event){
       // }
 }
 
-const getOtp = async(e) =>{
-  e.preventDefault();
-  try{
-      // const recaptcha = new RecaptchaVerifier(auth, "recaptcha", {'callback': (response) => {
-      //     console.log(response)
-      // },})
-      const confirmation = await signInWithPhoneNumber(auth, formData.phone)
-      console.log(confirmation,"Confirm");   
-      setUser(confirmation);
-      
-  }
-  catch(err){
-      console.log(err,"error");
-  }
-}
-
   return (
     <div>
       <section className="max-w-[80%] mx-auto justify-center gap-10 flex">
@@ -219,15 +201,14 @@ const getOtp = async(e) =>{
                       }
                 </span>
 
-              <PhoneInput 
+              <input 
                 defaultCountry='IN'
-                name="phone"
+                name='phone'
                 value={formData.phone}
                 onChange={changeHandler}
                 placeholder="Phone No.*"
                 className="w-full mb-4 border-[1px] border-lightgray rounded-lg p-2 text-lg max-w-full"
               />
-              <button onClick={getOtp}>Get OTP</button>
 
             </div>
             <button type="submit" className="rounded-full py-2 text-xl my-4 text-white bg-orange border-none w-full">Register</button>

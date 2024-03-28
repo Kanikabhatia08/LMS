@@ -8,7 +8,7 @@ function ContactUs() {
         <div className='flex justify-between'>
             <div className='w-[35%]'>
                 <h1 className='text-4xl mb-4'>Need A Direct Line?</h1>
-                <p className='text-gray'>Cras massa et odio donec faucibus in. Vitae pretium massa dolor ullamcorper lectus elit quam.</p>
+                <p className='text-gray'>Want to get in touch? We'd love to hear from you. Here's how you can reach us...</p>
                 <div className='flex gap-4 my-4'>
                     <img src={phone} alt="phone"/>
                     <div className='gap-y-2 flex flex-col'>
