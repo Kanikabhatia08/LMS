@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { Suspense, useState } from 'react'
 import hero from '../images/Hero.png'
 import {categories, featured} from '../data'
 import Categories from '../components/Home/Categories'
@@ -12,12 +12,16 @@ import student from '../images/student.png'
 import CountUp from 'react-countup'
 import quotes from "../images/Quotes.png"
 import ScrollTrigger from 'react-scroll-trigger'
+import { useAuth } from '../contexts/authContext'
+import Loader from '../components/Loader'
 
 
 
 function Home() {
 
   const [counter, setCounter] = useState(false);
+  const { currentUser, userLoggedIn} = useAuth()
+  console.log()
   
   return (
     <div>
@@ -27,15 +31,17 @@ function Home() {
             <img src={hero} className="w-screen" alt="banner"/>
         </div>
 
-        <div className="absolute md:max-w-[30%] xl:max-w-[35%] left-[12%] md:top-[28%] xl:top-[32%] text-left" >
-            
-            <h1 className="font-medium md:text-3xl xl:text-6xl animate-fadeLeft">
+        <div className="absolute  max-w-[30%] lg:max-w-[40%] left-[12%] top-[25%] lg:top-[28%] text-left" >
+        { userLoggedIn ? (<h1 className='text-3xl mb-2 font-exo -mt-10 font-semibold animate-fadeLeft'>Hello {currentUser.displayName ? currentUser.displayName : currentUser.email},</h1>) :
+            (<h1></h1>)
+        }
+            <h1 className="font-medium text-2xl md:text-4xl xl:text-6xl animate-fadeLeft">
               Build Skills With Online Course</h1>
             
-            <p className="text-gray md:py-6 xl:py-9 lg:text-base xl:text-xl">
+            <p className="text-gray text-xs py-3 md:py-6 xl:py-9 md:text-sm lg:text-xl">
               We denounce with righteous indignation and dislike men who are so beguiled and demoralized that cannot trouble.</p>
               
-            <button className="text-white bg-orange rounded-full md:text-base xl:text-xl py-3 px-4 animate-slideUp">
+            <button className="text-white bg-orange rounded-full text-sm md:text-lg xl:text-xl py-2 px-3 md:py-4 md:px-4 animate-slideUp">
               Posts Comment</button>
               
         </div>
@@ -79,11 +85,11 @@ function Home() {
         <div className="relative">
             <img src={AddOn1} alt='addOn1'/>
         </div>
-        <div className="absolute max-w-[25%] left-[14%] m-[3%]">
+        <div className="absolute flex flex-col gap-3 max-w-[25%] left-[14%] m-[3%]">
             <h3 className="text-gray text-xl">GET MORE POWER FROM</h3>
-            <h1 className="text-3xl font-[590] py-2">LearnPress Add-Ons</h1>
-            <p className="sm:hidden 2xl:block text-gray py-2 ">The next level of LearnPress - LMS WordPress Plugin. More Powerful, Flexible and Magical Inside.</p>
-            <button className="rounded-full sm:mt-8 2xl-mt-0 px-4 py-3 text-white bg-orange border-none">Explore Course</button>
+            <h1 className="hidden md:block text-3xl font-[590]">LearnPress Add-Ons</h1>
+            <p className="hidden xl:block text-[15px] text-gray ">The next level of LearnPress - LMS WordPress Plugin. More Powerful, Flexible and Magical Inside.</p>
+            <button className="hidden w-[50%] lg:block rounded-full  px-3  py-2 text-white bg-orange border-none">Explore Course</button>
             
         </div>
       </div>
@@ -194,7 +200,7 @@ function Home() {
         <div className="relative ">
             <img src={AddOn3} alt='AddOn3'/>
         </div>
-        <div className="absolute flex lg:mt-16 gap-40 lg:justify-between  ">
+        <div className="absolute flex lg:mt-16 gap-44 lg:justify-between  ">
             <div className="flex">
                 <img src={student} alt='student' className="lg:w-[19%]"/>
                 <h1 className="lg:text-lg 2xl:text-2xl lg:mt-7 mx-3">Let's Start With Academy LMS</h1>
@@ -211,7 +217,6 @@ function Home() {
     </div>
 
     </div>
-
   )
 }
 

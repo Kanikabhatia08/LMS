@@ -9,7 +9,7 @@ function Footer() {
             <div className="flex flex-row max-w-[73%] mx-auto pt-20">
             
                 <div className="col-lg-4">
-                    <img src={Flogo} className="w-[50%]"/>
+                    <img src={Flogo} alt='logo' className="w-[50%]"/>
                     <p className="py-10 text-gray font-jost lg:text-base 2xl:text-lg">
                         Empowering learners worldwide, EduPress is your gateway to a world of knowledge. 
                         With cutting-edge technology and comprehensive resources, we pave the path to educational 

@@ -75,6 +75,7 @@ const submitHandler = async(event) => {
 }
 
     return (
+        
         <div>
             {userLoggedIn && (<Navigate to={'/'} replace={true} />)}
         <section className="max-w-[80%] mx-auto justify-center gap-10 flex">

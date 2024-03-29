@@ -1,12 +1,14 @@
 import React from 'react'
 import Product from '../components/Product'
 import { products } from '../data'
+import Loader from '../components/Loader'
+import { Suspense } from 'react'
 
 
 function Courses() {
 
   return (
-    <div className="max-w-[73%] mx-auto justify-center">
+      <div className="max-w-[73%] mx-auto justify-center">
       <header className='flex justify-between items-center '>
           <div className="text-3xl font-semibold p-4">COURSE LIST</div>
       </header>
@@ -20,7 +22,6 @@ function Courses() {
       }
       </div>
     </div>
-
   )
 }
 

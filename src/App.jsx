@@ -1,18 +1,34 @@
-import Navbar from './components/Navbar';
+import { lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Courses from './pages/Courses';
-// import Login from './pages/Login';
-// import Signup from './pages/Signup';
-import Footer from './components/Footer';
+import Cart from './pages/Cart';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 import PrivateLink from './components/PrivateLink';
 import Error from './pages/Error';
-import Cart from './pages/Cart';
 import FAQs from './pages/FAQs';
 import ContactUs from './pages/ContactUs';
 import Blogs from './pages/Blogs';
+import Footer from './components/Footer';
 import FirebaseLogin from './pages/Auth/FirebaseLogin'
 import FirebaseRegister from './pages/Auth/FirebaseRegister'
+// const Navbar = lazy(() => import('./components/Navbar'));
+// const Home = lazy(() => import('./pages/Home'));
+// const Courses = lazy(() => import('./pages/Courses'));
+// const Cart = lazy(() => import('./pages/Cart'));
+// const Footer = lazy(() => import('./components/Footer'));
+// const PrivateLink = lazy(() => import('./components/PrivateLink'));
+// const Blogs = lazy(() => import('./pages/Blogs'));
+// const ContactUs = lazy(() => import('./pages/ContactUs'));
+// const FAQs = lazy(() => import('./pages/FAQs'));
+// const Error = lazy(() => import('./pages/Error'));
+// const FirebaseLogin = lazy(() => import('./pages/Auth/FirebaseLogin'));
+// const FirebaseRegister = lazy(() => import('./pages/Auth/FirebaseRegister'));
+
+
+
 
 function App() {
 
@@ -58,7 +74,6 @@ function App() {
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/faqs" element={<FAQs />} />
         <Route path="/contactUs" element={<ContactUs />} />
-
         <Route path="/*" element={<Error />} />
       </Routes>
       <Footer />

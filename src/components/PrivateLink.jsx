@@ -1,10 +1,10 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+// import { useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 import { useAuth } from '../contexts/authContext'
 
 function PrivateLink({ children}) {
-const {loggedInUser} = useSelector((state) => state)
+// const {loggedInUser} = useSelector((state) => state)
 const { userLoggedIn } = useAuth()
 
 // console.log(isLoggedIn,"priv")

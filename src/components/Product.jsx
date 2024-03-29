@@ -26,7 +26,7 @@ const Product = ({post}) => {
                 <h1 className='text-2xl font-semibold '>{post.name}</h1>
                 <p className='leading-2 tracking-wider text-xl'>${post.price}</p>
                 {
-                    cart.some((cartItem) => cartItem.id == post.id) ?
+                    cart.some((cartItem) => cartItem.id === post.id) ?
                     (
                         <button 
                             onClick={removeCart}

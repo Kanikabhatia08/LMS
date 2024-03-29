@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { Suspense, useState } from 'react'
 import toast from 'react-hot-toast';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import loginImg from '../../images/login.jpg'
 import { AiOutlineEye,AiOutlineEyeInvisible } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import { useAuth } from '../../contexts/authContext';
 import { doSignInWithEmailAndPassword, doSignInWithGoogle } from '../../Firebase/auth';
+import Loader from '../../components/Loader';
 
 
 function Login() {
@@ -28,7 +29,7 @@ function Login() {
         }
         catch(error){
             setErrorMessage(error.message)
-            toast.error(error.message)
+            toast.error(errorMessage)
             setIsSigningIn(false)
         }
 
@@ -49,7 +50,7 @@ function Login() {
         }
     }
 
-        return (
+    return (
         <div>
         {userLoggedIn && (<Navigate to={'/courses'} replace={true} />)}
 

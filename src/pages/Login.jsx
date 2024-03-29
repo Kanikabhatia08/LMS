@@ -87,7 +87,7 @@ function Login() {
     <div>
       <section className='flex justify-center mx-auto max-w-[80%]'>
         <div className="sm:hidden lg:block lg:max-w-[50%] xl:max-w-[50%] sm:my-[20%] lg:my-0">
-          <img src={loginImg} alt='login' loading='lazy'/>
+          <img src={loginImg} alt='login'/>
         </div>
         <form onSubmit={submitHandler}>
           <div className='border-[1px] border-lightgray rounded-2xl mt-10 p-9 shadow-lg'>

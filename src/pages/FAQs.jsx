@@ -64,7 +64,7 @@ function FAQs() {
                     </div>
                 ))}
                 </div>
-            <img src={faq} />
+            <img src={faq} alt='faqs' />
         </div>
     )
 }

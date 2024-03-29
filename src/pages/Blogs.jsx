@@ -1,10 +1,10 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchBlogs } from '../redux/slices/BlogSlice';
+// import { fetchBlogs } from '../redux/slices/BlogSlice';
 
 function Blogs() {
 
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
     const state = useSelector((state) => state);
     console.log(state, "bloggggggggg")
     

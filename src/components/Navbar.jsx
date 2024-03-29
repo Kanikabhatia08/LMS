@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Link, Navigate, useLocation } from 'react-router-dom'
 import logo from "../images/LOGO.jpg"
-import toast from 'react-hot-toast';
 import search from '../images/Search.png'
 import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
 import { GiShoppingCart } from "react-icons/gi";
@@ -24,13 +23,13 @@ function Navbar() {
         }
     })
 
-    let location = useLocation();
-    const {loggedInUser:isLoggedIn} = useSelector((state) => state)
     const { userLoggedIn } = useAuth()
-
+    let location = useLocation();
     let loc = window.location.pathname.split("/").splice(-1)[0]
+
+    // const {loggedInUser:isLoggedIn} = useSelector((state) => state)
     // console.log(loc);
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
     const [count, setCount] = useState(0)
     var c = 0;
     const {cart} = useSelector((state) => state)
@@ -45,14 +44,14 @@ function Navbar() {
     return (
         <div className=''>
             
-            <nav className="flex lg:flex-row lg:justify-between lg:items-center max-w-[80%] mx-auto text-lg py-2">
+            <nav className="flex lg:flex-row justify-between lg:items-center max-w-[80%] mx-auto text-lg py-2">
                 
                 <Link to="/">
-                    <img src={logo} className="img-fluid" alt="Logo"/>
+                    <img src={logo} className="img-fluid mt-3" alt="Logo"/>
                 </Link>
             
 
-                <div className="sm:hidden xl:flex xl:text-lg">
+                <div className="hidden xl:flex xl:text-lg">
                     <ul className="flex gap-8">
 
                         <li className="hover:no-underline hover:text-orange cursor-pointer">
@@ -86,7 +85,7 @@ function Navbar() {
                 </div>  
 
                 {/* Buttons */}
-                <div className="sm:hidden xl:flex gap-2">
+                <div className="flex gap-2">
                     {
                         !userLoggedIn &&
                         <Link to="/login">

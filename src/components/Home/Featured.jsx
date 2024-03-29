@@ -24,8 +24,8 @@ function Featured({featured}) {
                 <p className="text-gray">by <span className="text-black">{card.sub}</span></p>
                 <h3 className="text-xl font-semibold py-2 group-hover:text-orange">{card.title}</h3>
                 <div className="flex flex-col 2xl:flex-row lg:gap-3 2xl:gap-8 py-2">
-                    <p className="flex gap-2"><img src={hat} className="sm:h-4 lg:h-[20px] mt-1"/>{card.duration} Weeks </p>
-                    <p className="flex gap-2"><img src={clock} className="sm:h-5 lg:h-[18px] mt-1"/>{card.students} Students </p>
+                    <p className="flex gap-2"><img src={hat} alt='hat' className="sm:h-4 lg:h-[20px] mt-1"/>{card.duration} Weeks </p>
+                    <p className="flex gap-2"><img src={clock} alt='clock' className="sm:h-5 lg:h-[18px] mt-1"/>{card.students} Students </p>
                 </div>
             </div>
 
